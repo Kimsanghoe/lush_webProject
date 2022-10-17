@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-body {
-    background: #eee;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-}
+
 .header {
     position: fixed;
     top: 0;
