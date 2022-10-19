@@ -47,11 +47,13 @@
     align-items: center;
 }
 
+
 /* basic swiper */
 .basic-swiper .image_wrapper {
     position: relative;
     width: 100%;
     padding-top: 50%;
+    overflow: hidden;
 }
 .basic-swiper .image_wrapper img {
     position: absolute;
@@ -62,6 +64,8 @@
     object-fit: cover;
     object-position: center top;
 }
+
+
 .basic-swiper .image_wrapper .banner-text {
     position: absolute;
     left: 80px;
@@ -82,9 +86,22 @@
     font-size: 16px;
     font-weight: 400;
     letter-spacing: -0.5px;
+    text-align:left
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    color:#222;
 }
 
+.swiper-pagination-bullet-active{
+    background:#757575;
+}
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
+    background:rgba(0,0,0,.5);
+}
 /* card swiper */
+.swiper-wrapper{
+    margin-top:10px !important;
+}
 .card-swiper .swiper-slide {
     display: flex;
     justify-content: left;
@@ -99,7 +116,17 @@
     flex-direction: column;
 }
 .card-swiper .card-head img:nth-child(1) {
-    width: calc(40%);
+    width: calc(30%);
+}
+
+.card-swiper .image_wrapper .review-image{
+    width: auto;
+    height: auto;
+    opacity: 1;
+}
+
+.card-swiper .image_wrapper .this-prd{
+    opacity: 0;
 }
 .card-swiper .card-head p {
     margin: 0;
@@ -123,28 +150,58 @@
 .card-swiper .image_wrapper {
     width: 100%;
     margin-top: 10px;
+    height: 244px;
+    display: block;
+    position: relative;
+    overflow: hidden;
 }
 .card-swiper .image_wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    display: block;
+    position:absolute;  
+    left:50%;
+    top:50%;
+     transform: translate(-50%,-50%);
+    min-width: 100%;
+    min-height: 100%;
+    /* object-fit: cover;
+   object-position: center top;*/
 }
+.card-swiper .image_wrapper:hover :nth-child(1){
+    opacity: 0;
+}
+.card-swiper .image_wrapper:hover :nth-child(2){
+    opacity: 1;
+}
+
 .card-swiper .card-tail {
     width: 100%;
+    padding-bottom: 30px;
+    
+
 }
 .card-swiper .card-tail p {
     width: 100%;
+    height: 48px;
+    display: -webkit-box;
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 0.8rem;
     color: #535353;
     text-align: left;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    line-height: 24px;
+    letter-spacing: -0.45px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .card-swiper .card-tail .user {
-    margin-top: 10px;
+    margin-top: 5px;
     display: flex;
     align-items: center;
+    overflow:fixed;
+
 }
 .card-swiper .card-tail .user img {
     width: 10%;
