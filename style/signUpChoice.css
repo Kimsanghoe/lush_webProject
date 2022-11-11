@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+/* section */
+#section {
+    padding-top: 128px;
+}
+.join-title {
+    margin-top: 100px;
+    text-align: center;
+}
+.join-title h1 {
+    font-size: 32px;
+}
+.join-btn {
+    display: block;
+    margin: 40px auto 24px auto;
+    width: 300px;
+}
+.join-btn a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.black-btn {
+    position: relative;
+    background-color: #222;
+    color: #fff;
+}
+.naver-btn {
+    position: relative;
+    background-color: #2db400 ;
+    color: #fff;
+}
+.kakao-btn {
+    position: relative;
+    background-color: #fee500;
+    color: #222;
+}
