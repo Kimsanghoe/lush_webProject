@@ -1,0 +1,25 @@
+/* sidebar */
+.sidebar {
+    display: inline-block;
+    width: 20%;
+    /* background-color: lightblue; */
+}
+.sidebar-title {
+    text-align: center;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.sidebar-item {
+    margin-bottom: 20px;
+}
+.sidebar-item > p {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+}
+.sidebar-item > ul {margin-left: 50%;transform: translateX(-30%);}
+.sidebar-item > ul li {padding: 2px 0;font-weight: 300;}
+.sidebar-item > ul li a:hover{color: #18a957;}
