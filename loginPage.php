@@ -14,6 +14,8 @@
     <link rel="icon" type="image/png" sizes="96x96" href="images/ico/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/ico/favicon-16x16.png">
     <title>R & K</title>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php
@@ -47,14 +49,15 @@
                     <li><a href="#">비밀번호 찾기</a></li>
                 </ul>
                 <div class="sns-btns">
-                    <a href="#" class="naver-btn">네이버 아이디로 로그인</a>
-                    <a href="#" class="kakao-btn">카카오 아이디로 로그인</a>
+                    <?php require_once("./component/naverLogin/naverlogin.php") ?>
+                    <a href="<?=$naverUrl?>" class="naver-btn">네이버 아이디로 로그인</a>
+                    <?php require_once("./component/kakaoLogin/kakaologin.php") ?>
+                    <a href="<?=$kakao_apiURL?>" class="kakao-btn">카카오 아이디로 로그인</a>
                 </div>
             </form>
         </div>
     </section>
 
     <?php require_once("./component/footer.php") ?>
-
 </body>
 </html>

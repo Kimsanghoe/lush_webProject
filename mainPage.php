@@ -15,9 +15,10 @@
     <link rel="icon" type="image/png" sizes="96x96" href="images/ico/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/ico/favicon-16x16.png">
     <title>R & K</title>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- <header include-html="./html/header.php" style="z-index: 13;"></header> -->
     <?php require_once("./component/header.php") ?>
 
     <article>
@@ -500,15 +501,11 @@
         </div>
     </article>
 
-    <!-- <footer include-html="./html/footer.html"></footer> -->
+    <div id="message"></div>
+
     <?php require_once("./component/footer.php") ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./js/mainSwiper.js"></script>
-    <!-- <script src="./js/includeHTML.js"></script>
-
-    <script>
-        includeHTML();
-    </script> -->
 </body>
 </html>
