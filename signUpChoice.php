@@ -24,8 +24,10 @@
         </div>
         <div class="join-btn">
             <a href="./signUpForm.php" class="black-btn">홈페이지 회원가입</a>
-            <a href="#" class="naver-btn">네이버 아이디 회원가입</a>
-            <a href="#" class="kakao-btn">카카오 아이디 회원가입</a>
+            <?php require_once("./component/naverLogin/naverlogin.php") ?>
+            <a href="<?=$naverUrl?>" class="naver-btn">네이버 아이디 회원가입</a>
+            <?php require_once("./component/kakaoLogin/kakaologin.php") ?>
+            <a href="<?=$kakao_apiURL?>" class="kakao-btn">카카오 아이디 회원가입</a>
         </div>
     </section>
 

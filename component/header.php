@@ -313,8 +313,11 @@
                         </ul>
                     <?php } else { ?>
                         <ul>
-                            <li><?=$_SESSION["userName"]?></li>
-                            <li><a href="./php/member.php?mode=logout">로그아웃</a></li>
+                            <?php if(!isset($_SESSION["kakao_regist"])) { ?>
+                                <li><a href="./php/member.php?mode=logout">로그아웃</a></li>
+                            <?php } else { ?>
+                                <li><a href="./component/kakaoLogin/kakaologout.php">로그아웃</a></li>
+                            <?php } ?>
                             <li><a href="myPage.php">마이페이지</a></li>
                             <li><a href="#">커뮤니티</a></li>
                             <li><a href="#">고객센터</a></li>

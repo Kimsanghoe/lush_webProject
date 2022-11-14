@@ -25,11 +25,20 @@
                 errMsg("비밀번호가 일치하지 않습니다.");
             } elseif($count > 0) {
                 errMsg("중복된 아이디가 존재합니다.");
-            }
+            } elseif(!preg_match("/^[a-z]+[a-z0-9]{5,19}$/", $uid)) {
+                errMsg("아이디는 영문자 혹은 숫자로 6자리 이상이어야 합니다.");
+            } elseif(!preg_match("/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/", $upw)) {
+                errMsg("비밀번호는 8~16자 영문, 숫자, 특수문자를 최소 한가지씩 조합해야 합니다.");
+            } elseif(!preg_match("/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/", $uEmail)) {
+                errMsg('이메일은 "rnk1234@rnk.net" 형식으로 작성되어야 합니다.');
+            } elseif(!preg_match("/^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/", $uPhone)) {
+                errMsg('휴대전화 번호는 "010-1234-1234" 형식으로 작성되어야 합니다.');
+            } 
 
             $hashedPw = password_hash($upw, PASSWORD_DEFAULT);
+            $regist = "homepage";
 
-            $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now());");
+            $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate, regist) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now(), :regist);");
             $sql->bindParam(':uID', $uid);
             $sql->bindParam(':uPW', $hashedPw);
             $sql->bindParam(':uNAME', $uName);
@@ -37,6 +46,7 @@
             $sql->bindParam(':uEmail', $uEmail);
             $sql->bindParam(':uPhoneNum', $uPhone);
             $sql->bindParam(':uAddress', $uAddress);
+            $sql->bindParam(':regist', $regist, PDO::PARAM_STR);
 
             $sql->execute();
 
@@ -82,6 +92,10 @@
 
         case 'logout':
             session_unset();
+
+            // 네이버 로그아웃
+            header("location: http://nid.naver.com/nidlogin.logout");
+            
             header("location:../mainPage.php");
             break;
     }

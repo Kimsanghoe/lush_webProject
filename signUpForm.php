@@ -23,6 +23,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(e) {
+            // 아이디 체크
             $(".checkID").on("keyup", function() {
                 var self = $(this);
                 var uid;
@@ -44,7 +45,7 @@
                             self.parent().parent().find("#id_check > p").html("<font color='#FF6600'>이미 존재하는 아이디입니다.</font>");
                         } else if(data == 3) {
                             self.parent().find("#uid").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #FF6600'});
-                            self.parent().parent().find("#id_check > p").html("<font color='#FF6600'>아이디는 영문자 또는 숫자로<br>6자리 이상 입력해주세요.</font>");
+                            self.parent().parent().find("#id_check > p").html("<font color='#FF6600'>아이디는 영문자로 시작하는<br>영문자 또는 숫자 6~20자입니다.</font>");
                         } else if(data == 4) {
                             self.parent().find("#uid").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #0821F8'});
                             self.parent().parent().find("#id_check > p").html("<font color='#0821F8'>사용 가능한 아이디입니다.</font>");
@@ -52,7 +53,28 @@
                     }
                 )
             });
+            
+            // 비밀번호 체크
+            $(".contentPW").on("keyup", function() {
+                var self = $(this);
 
+                let upwContent = $('#upw').val();
+                var regExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+
+                if(upwContent === "") {
+                    self.parent().find("#upw").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #FF6600'});
+                    self.parent().parent().find("#pw_content_check > p").html("<font color='#FF6600'>비밀번호를 입력해주세요.</font>");
+                }
+                else if(regExp.test(upwContent)) {
+                    self.parent().find("#upw").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #0821F8'});
+                    self.parent().parent().find("#pw_content_check > p").html("<font color='#0821F8'>올바른 비밀번호입니다.</font>");
+                } else {
+                    self.parent().find("#upw").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #FF6600'});
+                    self.parent().parent().find("#pw_content_check > p").html("<font color='#FF6600'>올바르지 않은 비밀번호입니다.</font>");
+                }
+            });
+
+            // 비밀번호 확인 체크
             $(".checkPW").on("keyup", function() {
                 var self = $(this);
 
@@ -67,6 +89,26 @@
                         self.parent().find("#upwCheck").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #FF6600'});
                         self.parent().parent().find("#pw_check > p").html("<font color='#FF6600'>패스워드가 일치하지 않습니다.</font>");
                     }
+                }
+            });
+
+            // 휴대전화 체크
+            $(".checkPhone").on("keyup", function() {
+                var self = $(this);
+
+                let uphone = $('#uPhone').val();
+                var regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+
+                if(uphone === "") {
+                    self.parent().find("#uPhone").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #FF6600'});
+                    self.parent().parent().find("#phone_check > p").html("<font color='#FF6600'>전화번호를 입력해주세요.</font>");
+                }
+                else if(regExp.test(uphone)) {
+                    self.parent().find("#uPhone").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #0821F8'});
+                    self.parent().parent().find("#phone_check > p").html("<font color='#0821F8'>올바른 전화번호입니다.</font>");
+                } else {
+                    self.parent().find("#uPhone").css({'border':'none', 'outline':'none', 'box-shadow':'0 0 0 2px #FF6600'});
+                    self.parent().parent().find("#phone_check > p").html("<font color='#FF6600'>올바르지 않은 전화번호입니다.<br>- 를 포함하여 입력해주세요.</font>");
                 }
             });
         });
@@ -97,7 +139,7 @@
                         <p class="form-content-title"><span>*</span> 아이디</p>
                     </div>
                     <div class="flexin-4">
-                        <input class="form-content-text checkID" type="text" name="_id" id="uid" placeholder="영문자 혹은 숫자로 6자리 이상">
+                        <input class="form-content-text checkID" type="text" name="_id" id="uid" placeholder="영문자로 시작하는 영문자 또는 숫자 6~20자">
                     </div>
                     <div class="flexin-1" id="id_check">
                         <p style="float:right;text-align:right;font-size:12px;"></p>
@@ -107,8 +149,11 @@
                     <div class="flexin-1">
                         <p class="form-content-title"><span>*</span> 비밀번호</p>
                     </div>
-                    <div class="flexin-5">
-                        <input class="form-content-text" type="password" name="_pw" id="upw" placeholder="영문 또는 영문 및 숫자 4자리 이상">
+                    <div class="flexin-4">
+                        <input class="form-content-text contentPW" type="password" name="_pw" id="upw" placeholder="8~16자 영문, 숫자, 특수문자를 최소 한가지씩 조합">
+                    </div>
+                    <div class="flexin-1" id="pw_content_check">
+                        <p style="float:right;text-align:right;font-size:12px;"></p>
                     </div>
                 </div>
                 <div class="form-row flex">
@@ -159,8 +204,11 @@
                     <div class="flexin-1">
                         <p class="form-content-title"><span>*</span> 휴대전화</p>
                     </div>
-                    <div class="flexin-5">
-                        <input class="form-content-text" type="text" name="_phone" placeholder="- 를 포함하여 입력해주세요. (ex. 010-1234-5678)">
+                    <div class="flexin-4">
+                        <input class="form-content-text checkPhone" id="uPhone" type="text" name="_phone" placeholder="- 를 포함하여 입력해주세요. (ex. 010-1234-5678)">
+                    </div>
+                    <div class="flexin-1" id="phone_check">
+                        <p style="float:right;text-align:right;font-size:12px;"></p>
                     </div>
                 </div>
                 <div class="form-row flex">
