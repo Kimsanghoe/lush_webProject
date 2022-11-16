@@ -118,7 +118,7 @@
                 $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate, regist) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now(), :regist);");
                 $sql->bindParam(':uID', $emptyData, PDO::PARAM_STR);
                 $sql->bindParam(':uPW', $emptyData, PDO::PARAM_STR);
-                $sql->bindParam(':uNAME', $emptyData, PDO::PARAM_STR);
+                $sql->bindParam(':uNAME', $mb_nickname);
                 $sql->bindParam(':uNick', $mb_nickname);
                 $sql->bindParam(':uEmail', $mb_email);
                 $sql->bindParam(':uPhoneNum', $emptyData, PDO::PARAM_STR);
