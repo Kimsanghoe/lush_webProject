@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+.main {
+    padding: 130px;
+}
+
+.main .category_depth .list{
+    font-size: 12px;
+}
+
+.main .category_depth .list li{
+    display: inline-block;
+    color:#666;
+}
+
+.goods_list_top{
+    margin-top: 24px;
+    color: #222222;
+    display: flex;
+    justify-content: space-between;
+    font-size:13px;
+    
+}
+
+.goods_list_summary span{
+    padding-right: 20px;
+    
+
+}
+.goods_list_summary span a{
+    color:#666;
+}
+.on a{
+    color:#222 !important;
+    font-weight: 600;
+}
+
+.goods_list_sort span{
+    padding-right: 20px;
+}
+
