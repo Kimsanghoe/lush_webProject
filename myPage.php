@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style/css/main.css" rel="stylesheet" type="text/css"/>
     <link href="style/css/reset.css" rel="stylesheet" type="text/css"/>
@@ -16,18 +16,18 @@
     <title>R & K</title>
 </head>
 <body>
-    <?php require_once("./component/header.php"); ?>
+    <?php require_once("./component/header.php");?>
 
     <section id="section" class="container flex">
         <!-- sidebar -->
-        <?php require_once("./component/sidebar.php"); ?>
+        <?php require_once("./component/sidebar.php");?>
 
         <div class="content-space">
             <div class="user-box flex">
                 <div class="user-info flex center">
                     <img src="https://www.lush.co.kr/upload/user_level/1/Logo%20(1).png" alt="levelImg">
                     <div>
-                        <p class="user-name"><?=$_SESSION["userName"]?>님</p>
+                        <p class="user-name"><?=$_SESSION["userName"] ?? ""?>님</p>
                         <a href="#">회원정보 변경</a>
                         <br>
                         <a href="#">배송지 관리</a>
@@ -126,6 +126,6 @@
         </div>
     </section>
 
-    <?php require_once("./component/footer.php"); ?>
+    <?php require_once("./component/footer.php");?>
 </body>
 </html>

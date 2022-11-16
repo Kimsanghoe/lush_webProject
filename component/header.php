@@ -294,7 +294,7 @@
                     </a> 
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="cart.php">
                         <img src="images/ico/bag.svg" alt="장바구니"/>
                     </a> 
                 </li>
