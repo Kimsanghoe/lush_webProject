@@ -19,7 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php require_once("./component/header.php") ?>
+    <?php require_once("./component/header.php")?>
 
     <article>
         <div class="main">
@@ -28,25 +28,25 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/mainBanner/20220926095203L.png" alt="img">
+                                <img src="/rnk/images/mainbanner/20221006095042L.png" alt="img">
                                 <div class="banner-text">
-                                    <p>미리 만나는<br>크리스마스</p>
-                                    <span>[NEW] 산타가 주는 향기로운 선물</span>
+                                    <p>10월 포토<br>리뷰 이벤트</p>
+                                    <span>시월의 어느 멋진 날에</span>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/mainBanner/20220926095203L.png" alt="img">
+                                <img src="/rnk/images/mainbanner/20220926145731L.png" alt="img">
                                 <div class="banner-text">
-                                    <p>미리 만나는<br>크리스마스</p>
-                                    <span>[NEW] 산타가 주는 향기로운 선물</span>
+                                    <p>나의 입욕이<br>가치 있기를!</p>
+                                    <span>수마트라 오랑우탄을 지켜주세요</span>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/mainBanner/20220926095203L.png" alt="img">
+                                <img src="/rnk/images/mainbanner/20220930105940L.png" alt="img">
                                 <div class="banner-text">
                                     <p>미리 만나는<br>크리스마스</p>
                                     <span>[NEW] 산타가 주는 향기로운 선물</span>
@@ -67,7 +67,7 @@
                         <div class="swiper-slide">
                             <div class="card-head">
                                 <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
+                                <p>무시무시한</p>
                                 <div class="sub-button">
                                     <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
                                     <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
@@ -501,9 +501,7 @@
         </div>
     </article>
 
-    <div id="message"></div>
-
-    <?php require_once("./component/footer.php") ?>
+    <?php require_once("./component/footer.php")?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./js/mainSwiper.js"></script>

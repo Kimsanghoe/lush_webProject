@@ -27,11 +27,11 @@
             </ul>
 
             <ul class="sns">
-                <li><a href="https://twitter.com/LUSHKOREA" target="_blank"><img src="images/ico/ico_twitter.png" alt="러쉬 트위터 바로가기" style="width:40px"></a></li>
-                <li><a href="https://www.instagram.com/lushkorea" target="_blank"><img src="images/ico/ico_insta.svg" alt="러쉬 인스타그램 바로가기"></a></li>
-                <li><a href="https://www.youtube.com/user/LUSHKOREA1" target="_blank"><img src="images/ico/ico_youtube.svg" alt="러쉬 유튜브 바로가기"></a></li>
-                <li><a href="https://pf.kakao.com/_VEbUM" target="_blank"><img src="images/ico/ico_kakao.svg" alt="러쉬 카카오플러스 바로가기"></a></li>
-                <li><a href="https://m.post.naver.com/lushkr1" target="_blank"><img src="images/ico/ico_naver.svg" alt="러쉬 네이버 바로가기"></a></li>
+                <li><a href="https://twitter.com/LUSHKOREA" target="_blank"><img src="/rnk/images/ico/ico_twitter.png" alt="러쉬 트위터 바로가기" style="width:40px"></a></li>
+                <li><a href="https://www.instagram.com/lushkorea" target="_blank"><img src="/rnk/images/ico/ico_insta.svg" alt="러쉬 인스타그램 바로가기"></a></li>
+                <li><a href="https://www.youtube.com/user/LUSHKOREA1" target="_blank"><img src="/rnk/images/ico/ico_youtube.svg" alt="러쉬 유튜브 바로가기"></a></li>
+                <li><a href="https://pf.kakao.com/_VEbUM" target="_blank"><img src="/rnk/images/ico/ico_kakao.svg" alt="러쉬 카카오플러스 바로가기"></a></li>
+                <li><a href="https://m.post.naver.com/lushkr1" target="_blank"><img src="/rnk/images/ico/ico_naver.svg" alt="러쉬 네이버 바로가기"></a></li>
             </ul>
         </div>
 
@@ -40,12 +40,12 @@
             <ul class="notice">
                 <li>
                     <a href="mypage/view/1922.html">
-                        <span>2022-09-29</span>9월 30일(금) 고객센터 임시 휴무 안내	<img src="images/ico/ico_new.svg" class="footer-ico" alt="새글 아이콘" >
+                        <span>2022-09-29</span>9월 30일(금) 고객센터 임시 휴무 안내	<img src="/rnk/images/ico/ico_new.svg" class="footer-ico" alt="새글 아이콘" >
                     </a>
                 </li>
                 <li>
                     <a href="mypage/view/1921.html">
-                        <span>2022-09-14</span>[공지] 네이버페이 결제 시, 덕찌 미발급 안내 <img src="images/ico/ico_new.svg" class="footer-ico" alt="새글 아이콘" >
+                        <span>2022-09-14</span>[공지] 네이버페이 결제 시, 덕찌 미발급 안내 <img src="/rnk/images/ico/ico_new.svg" class="footer-ico" alt="새글 아이콘" >
                     </a>
                 </li>
                 </ul>
