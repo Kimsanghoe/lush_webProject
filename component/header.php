@@ -6,7 +6,7 @@
     </div>
     <div class="header-wrap no-bor">
         <div class="left-menu flex">
-            <a href="mainPage.php" class="logo"><img src="images/R&K_logo.png" alt="로고"/></a>
+            <a href="/rnk/mainPage.php" class="logo"><img src="/rnk/images/R&K_logo.PNG" alt="로고"/></a>
             <nav class="top-menu">
                 <ul class="flex left">
                     <li class="main-menu">
@@ -15,19 +15,19 @@
                             <div class="drop-menu-wrap">
                                 <ul class="flex top">
                                     <li>
-                                        <a href="#" class="sub-menu">베스트</a>
+                                        <a href="/rnk/sub/sub_product.php?cate=best" class="sub-menu">베스트</a>
                                         <ul class="sub-sub-menu">
                                             <li>
-                                                <a href="#" >BEST 50</a>
+                                                <a href="/rnk/sub/sub_product.php?cate=best50" >BEST 50</a>
                                             </li>
                                             <li>
-                                                <a href="#">국내제조</a>
+                                                <a href="/rnk/sub/sub_product.php?cate=domestic">국내제조</a>
                                             </li>
                                             <li>
-                                                <a href="#">네이키드</a>
+                                                <a href="/rnk/sub/sub_product.php?cate=naked">네이키드</a>
                                             </li>
                                             <li>
-                                                <a href="#">러쉬 아트 큐레이션</a>
+                                                <a href="/rnk/sub/sub_product.php?cate=rushart">러쉬 아트 큐레이션</a>
                                             </li>
                                             
                                         </ul>
@@ -290,23 +290,23 @@
             <ul>
                 <li>
                     <a href="#">
-                        <img src="images/ico/search.svg" alt="검색"/>
+                        <img src="/rnk/images/ico/search.svg" alt="검색"/>
                     </a> 
                 </li>
                 <li>
                     <a href="cart.php">
-                        <img src="images/ico/bag.svg" alt="장바구니"/>
+                        <img src="/rnk/images/ico/bag.svg" alt="장바구니"/>
                     </a> 
                 </li>
                 <li>
                     <a href="#">
-                        <img src="images/ico/account.svg" alt="마이페이지"/>
+                        <img src="/rnk/images/ico/account.svg" alt="마이페이지"/>
                     </a>
                     <div class="mypage-menu">
                     <?php if(!isset($_SESSION["userId"])) { ?>
                         <ul>
-                            <li><a href="loginPage.php">로그인</a></li>
-                            <li><a href="signUpChoice.php">회원가입</a></li>
+                            <li><a href="/rnk/loginPage.php">로그인</a></li>
+                            <li><a href="/rnk/signUpChoice.php">회원가입</a></li>
                             <li><a href="#">커뮤니티</a></li>
                             <li><a href="#">고객센터</a></li>
                             <li><a href="#">선물함<span id="commonGiftCount"></span></a></li>
@@ -314,11 +314,11 @@
                     <?php } else { ?>
                         <ul>
                             <?php if(!isset($_SESSION["kakao_regist"])) { ?>
-                                <li><a href="./php/member.php?mode=logout">로그아웃</a></li>
+                                <li><a href="/rnk/php/member.php?mode=logout">로그아웃</a></li>
                             <?php } else { ?>
-                                <li><a href="./component/kakaoLogin/kakaologout.php">로그아웃</a></li>
+                                <li><a href="/rnk/component/kakaoLogin/kakaologout.php">로그아웃</a></li>
                             <?php } ?>
-                            <li><a href="myPage.php">마이페이지</a></li>
+                            <li><a href="/rnk/myPage.php">마이페이지</a></li>
                             <li><a href="#">커뮤니티</a></li>
                             <li><a href="#">고객센터</a></li>
                             <li><a href="#">선물함<span id="commonGiftCount"></span></a></li>
