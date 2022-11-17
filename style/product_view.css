@@ -3,12 +3,40 @@
 .flex {display: flex; align-items: center;}
 .flex .center {justify-content: center;}
 
+.border-btn {border: 2px solid #bdbdbd;background-size: 18px auto;text-indent: -9999px;}
+.black-btn {position: relative;background-color: #222;color: #fff;}
+
 /* section */
 #section {padding-top: 128px;}
-.product-intro {width: 100%;height:800px;}
-.product-intro > .image-area {width: 50%;background-color: aquamarine;}
-.product-intro > .info-area{width: 50%;background-color: salmon;margin-left: 50px;}
-.info-area > .info-top{margin-top: 30px;}
+
+.product-intro {width: 100%;}
+.product-intro > .image-area {width: 60%;}
+.product-intro > .info-area {width: 40%;margin-left: 50px;}
+.info-area > .info-top {margin-top: 30px;}
+.info-top li a {display: block;color: #535353;border-bottom: 1px solid #535353;}
+.info-area > .info-wrap{width: 100%;}
+.info-wrap > img {width: 100%;}
+.info-wrap > .product-name {font-size: 32px;text-align: center;}
+.info-wrap > .category {display: block;margin: 14px auto 6px auto;font-size: 18px;text-align: center;}
+.info-wrap > .hash-box {margin-bottom: 32px;}
+.info-wrap > .hash-box li {display: inline-block;color: #535353;margin: 0 3px;font-size: 16px;}
+.info-wrap > .price {width: 100%;border-top: 1px solid #bdbdbd;border-bottom: 1px solid #bdbdbd;padding: 20px 0;}
+.info-wrap > .price > span {color: #222;font-size: 24px;font-weight: 700;}
+.info-wrap > .price > .amount-wrap .amount {background: none;width: 24px;height: 24px;}
+.info-wrap > .price > .amount-wrap input[type="text"] {width: 50px;height: 24px;border: none;outline: none;text-align: center;font-size: 18px;}
+.info-wrap > .total-price-wrap {margin: 28px 0;}
+.info-wrap > .total-price-wrap li {color: #535353;font-size: 20px;}
+.info-wrap > .total-price-wrap li span {color: #222;font-size: 26px;font-weight: 700;}
+.info-wrap > .button-wrap button {height: 64px;}
+.info-wrap > .button-wrap > .like-btn {width: 70px;background: url("https://www.lush.co.kr/content/renewal/pc/images/ico/ico_like.svg") no-repeat center center;}
+.info-wrap > .button-wrap > .cart-btn {width: 70px;background: url("https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg") no-repeat center center;}
+.info-wrap > .button-wrap > .buy-btn {width: 300px;}
+
+.product-detail {width: 100%;height: 500px;margin-top: 100px;}
+.product-detail .detail-tab {width: 900px;border-bottom: 1px solid #eee;margin-left: 50%;transform: translateX(-50%);}
+.product-detail .detail-tab li {width: 200px;}
+.product-detail .detail-tab li a {display: block;padding: 16px 0;color: #949494;font-size: 18px;font-weight: 500;text-align: center;}
+.product-detail .detail-tab li a.on {color: #222;border-bottom: 2px solid #222;}
 
 .swiper {
     width: 100%;
