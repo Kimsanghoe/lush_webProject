@@ -291,7 +291,7 @@
                 </div>
             </div>
             <div class="detail-view">
-                <div class="info-wrap">
+                <div class="scription-wrap">
                     <ul>
                         <li class="flex">
                             <span>배송비</span>
@@ -321,7 +321,7 @@
                 </div>
             </div>
             <div class="detail-view on">
-                <div class="info-wrap">
+                <div class="scription-wrap">
                     <ul>
                         <li class="flex">
                             <span>용량/중량</span>
