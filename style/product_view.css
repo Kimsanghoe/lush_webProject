@@ -103,7 +103,7 @@
 .pagination ul li {display: block;padding: 0 8px;}
 .pagination ul li a {font-size: 14px;}
 
-.info-wrap {padding: 0 10%;}
-.info-wrap ul li {justify-content: flex-start;padding: 20px 0;border-bottom: 1px solid #eee;margin-top: -1px;}
-.info-wrap ul li span {display: inline-block;width: 20%;color: #757575;font-weight: 700;}
-.info-wrap ul li p {color: #222;max-width: 80%;}
+.scription-wrap {padding: 0 10%;}
+.scription-wrap ul li {justify-content: flex-start;padding: 20px 0;border-bottom: 1px solid #eee;margin-top: -1px;}
+.scription-wrap ul li span {display: inline-block;width: 20%;color: #757575;font-weight: 700;}
+.scription-wrap ul li p {color: #222;max-width: 80%;}
