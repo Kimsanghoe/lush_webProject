@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-header {position:fixed;display:block;left:0;top:0;width:100%;background:#fff;z-index:13;border-bottom: 1px solid #eee;}
+header {position:fixed;display:block;left:0;top:0;width:100%;background:#fff;z-index:13;}
 header .top-banner {background:#222;text-align: center;}
 header .top-banner a {width:100%;padding:0 16px;display:inline-block;color:#fff;line-height:30px;font-size:14px;font-weight:300;min-height:32px;}
 

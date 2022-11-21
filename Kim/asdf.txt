@@ -1,3 +1,0 @@
-open-menu = main-menu
-all-menu = drop-menu
-inner -drop-menu-wrap

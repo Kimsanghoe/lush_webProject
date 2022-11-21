@@ -1,17 +1,16 @@
-<?php session_start();?>
 <?php
+	session_start();
 	$id = $_REQUEST["id"];
 	$pw = $_REQUEST["pw"];
 	
-	$db = new PDO("mysql:host=localhost;port=3307;dbname=kshdb", "ksh", "1234");
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	require("sub/db_connect.php");
 	
-	$query = $db->query("select * from member where id='$id' and pw='$pw'");
+	$query = $PDO->query("select * from member where id='$id' and pw='$pw'");
 	if($row = $query->fetch()){
 		$_SESSION["userId"] = $row["id"];
 		$_SESSION["userName"] = $row["name"];
 		
-		header("Location:master.html");
+		header("Location:master.php");
 		exit;
 	}
 ?>

@@ -1,24 +1,7 @@
-<?php session_start();?>
-<?php
-		unset($_SESSION["userId"]);
-		unset($_SESSION["userName"]);		
-		
-		header("Location:master.html");
-		exit;	
+<?php 
+	session_start();
+	unset($_SESSION["userId"]);
+	unset($_SESSION["userName"]);
+	header("Location:master.php");
+	exit;	
 ?>
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">	
-</head>
-<body>
-	
-</body>
-</html> 
-
-
-
-
-
-
-

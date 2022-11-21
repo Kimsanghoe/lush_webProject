@@ -24,10 +24,6 @@ $(".p_delete_btn").click(function () {
     
 });
 
-
-
-      
-
 $(document).ready(function () {
     if (window.location.hash == '#update') {
       onReload();

@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot");
@@ -1277,8 +1275,9 @@ body .container.body .right_col {
   color: #fff !important; }
 
 body {
+  margin: 0;
   color: #73879C;
-  background: #2A3F54;
+  background: #222;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;

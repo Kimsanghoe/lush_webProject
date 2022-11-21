@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+.container {width: 1080px; margin: 0 auto;}
+.flex {display: flex; align-items: center;}
+.flex .center {justify-content: center;}
+.flexin-1 {flex: 1;}
+.flexin-2 {flex: 2;}
+.flexin-3 {flex: 3;}
+.flexin-4 {flex: 4;}
+.flexin-5 {flex: 5;}
+
+/* section */
+#section {
+    padding-top: 128px;
+}
+.join-title {
+    text-align: center;
+}
+.join-title h2 {
+    font-size: 48px;
+}
+.join-subtitle {
+    margin-top: 30px;
+}
+.join-subtitle > ul li {
+    color: #949494;
+    margin: 0 40px;
+    position: relative;
+    font-size: 18px;
+}
+.join-subtitle > ul li.on {
+    color: #222;
+    font-weight: 500;
+}
+.join-subtitle > ul li:nth-child(1):after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: -44px;
+    top: 8px;
+    width: 8px;
+    height: 13px;
+    background: url("../images/arrow_next.svg") no-repeat center center;
+}
+.join-complete {margin-top: 50px; text-align: center;}
+.join-complete h2 {font-size: 38px;}
+.join-complete p {font-size: 20px; margin-top: 30px;}
+.join-complete span {display: block; font-size: 14px; margin-top: 40px; color: #949494;}
+.join-complete .complete-btn {display: inline-block; width: 250px; height: 50px; line-height: 50px; background-color: #222; color: #fff; padding: 0 30px; margin-top: 50px;}

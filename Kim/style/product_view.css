@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+.container {width: 1280px;margin: 0 auto;}
+.flex {display: flex; align-items: center;}
+.flex .center {justify-content: center;}
+
+.border-btn {border: 2px solid #bdbdbd;background-size: 18px auto;text-indent: -9999px;}
+.black-btn {position: relative;background-color: #222;color: #fff;}
+
+.swiper {width: 100%;height: 100%;}
+.swiper-wrapper img {display: block;width: 100%;height: 100%;object-fit: cover;}
+
+/* section */
+#section {padding-top: 128px;}
+
+.product-intro {width: 100%;}
+.product-intro > .image-area {width: 60%;}
+.product-intro > .info-area {width: 40%;margin-left: 50px;}
+.info-area > .info-top {margin-top: 30px;}
+.info-top li a {display: block;color: #535353;border-bottom: 1px solid #535353;}
+.info-area > .info-wrap{width: 100%;}
+.info-wrap > img {width: 100%;}
+.info-wrap > .product-name {font-size: 32px;text-align: center;}
+.info-wrap > .category {display: block;margin: 14px auto 6px auto;font-size: 18px;text-align: center;}
+.info-wrap > .hash-box {margin-bottom: 32px;}
+.info-wrap > .hash-box li {display: inline-block;color: #535353;margin: 0 3px;font-size: 16px;}
+.info-wrap > .price {width: 100%;border-top: 1px solid #bdbdbd;border-bottom: 1px solid #bdbdbd;padding: 20px 0;}
+.info-wrap > .price > span {color: #222;font-size: 24px;font-weight: 700;}
+.info-wrap > .price > .amount-wrap .amount {background: none;width: 24px;height: 24px;}
+.info-wrap > .price > .amount-wrap input[type="text"] {width: 50px;height: 24px;border: none;outline: none;text-align: center;font-size: 18px;}
+.info-wrap > .total-price-wrap {margin: 28px 0;}
+.info-wrap > .total-price-wrap li {color: #535353;font-size: 20px;}
+.info-wrap > .total-price-wrap li span {color: #222;font-size: 26px;font-weight: 700;}
+.info-wrap > .button-wrap button {height: 64px;}
+.info-wrap > .button-wrap > .like-btn {width: 70px;background: url("https://www.lush.co.kr/content/renewal/pc/images/ico/ico_like.svg") no-repeat center center;}
+.info-wrap > .button-wrap > .cart-btn {width: 70px;background: url("https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg") no-repeat center center;}
+.info-wrap > .button-wrap > .buy-btn {width: 300px;}
+
+.product-detail {width: 100%;margin-top: 100px;}
+.product-detail .detail-tab {width: 80%;border-bottom: 1px solid #eee;margin-left: 50%;transform: translateX(-50%);margin-bottom: 64px;}
+.product-detail .detail-tab li {width: 200px;}
+.product-detail .detail-tab li a {display: block;padding: 16px 0;color: #949494;font-size: 18px;font-weight: 500;text-align: center;}
+.product-detail .detail-tab li a.on {color: #222;border-bottom: 2px solid #222;}
+
+.product-detail .detail-view {display: none;}
+.product-detail .detail-view.on {display: block;}
+
+.product-title {text-align: center;}
+.product-title .mini-name {font-size: 16px;color: #535353;}
+.product-title .product-name {margin: 16px auto 6px auto;font-size: 32px;color: #222;}
+
+.product-section {margin-top: 128px;}
+.product-recommend {width: 100%;}
+.product-recommend .product-recommend-body {display: block;width: 30%;padding: 0 30px;}
+.product-recommend .product-recommend-body img {width: 100px;}
+.product-recommend .product-recommend-body h3 {margin: 16px auto 8px auto;font-size: 32px;color: #222;}
+.product-recommend .product-recommend-body p:first-of-type {columns: #757575;margin-bottom: 20px;}
+.product-recommend .product-recommend-body p:last-of-type {color: #535353;}
+.product-recommend .product-recommend-body span {display: block;margin-top: 8px;}
+.product-recommend .product-recommend-img {width: 70%;}
+.product-recommend .product-recommend-img img {width: 100%;}
+
+.product-description {margin-top: 128px;text-align: center;}
+.product-description h3 {margin-bottom: 24px;font-size: 32px;}
+.product-description p {margin-bottom: 72px;color: #535353;}
+
+.product-banner {width: 100%;margin-bottom: 128px;}
+.product-banner img {width: 100%;}
+
+.product-ingredient {margin-top: 128px;text-align: center;}
+.product-ingredient h3 {font-size: 32px;}
+.product-ingredient ul {width: 100%;height: 350px;margin: 48px auto 32px auto;justify-content: center;flex-wrap: wrap;}
+.product-ingredient ul li {width: calc(100%/4 - 24px);height: 350px;background: #fafafa;padding: 10px 20px; margin-right: 24px;}
+.product-ingredient ul li img {display: block;width: 80%;margin: 0 auto;}
+.product-ingredient ul li span {display: inline-block;font-size: 22px;font-weight: 500;color: #222;margin: 16px auto 8px auto;text-decoration: underline;text-underline-position: under;}
+.product-ingredient ul li p {font-size: 18px;color: #535353;}
+.product-ingredient .all-ingre p {margin-bottom: 8px;color: #535353;font-size: 16px;}
+.product-ingredient .all-ingre p span {font-weight: 700;display: inline-block;margin-right: 8px;}
+
+.product-qna {margin-top: 128px;}
+.product-qna h3 {text-align: center;font-size: 34px;}
+.product-qna ul {display: block;width: 80%;margin: 36px auto 0 auto;}
+.product-qna ul li {padding: 32px 40px;border-top: 1px solid #eee;}
+.product-qna ul li p:first-of-type {font-size: 18px;font-weight: 700;}
+.product-qna ul li p:last-of-type {color: #535353;margin: 12px 0;}
+
+.review {padding: 0 10%;}
+.review h2 {margin-bottom: 38px;}
+.review .reviewSwipe .swiper-slide {background-position: center;background-size: cover;width: 250px;height: 250px;}
+.review-wrap {margin-top: 60px;}
+.review-wrap ul li {display: block;padding: 12px auto 24px auto;border-top: 1px solid #eee;border-bottom: 1px solid #eee;margin-top: -1px;}
+.review-wrap ul li .review-top {justify-content: flex-start;margin: 20px 0;height: 50px;}
+.review-top .user img {width: auto;max-height: 50px;}
+.review-top .user span {display: inline-block;margin-left: 5px;color: #535353;font-size: 14px;}
+.review-top > img {width: 100px;margin-left: 20px;}
+.review-top .date {margin-left: auto;color: #535353;font-size: 14px;}
+.review-bottom {margin-bottom: 20px;}
+.review-bottom p {color: #535353;font-size: 20px;}
+.review-bottom .review-side {width: 80px;height: 80px;}
+.review-bottom .review-side img {display: block;width: 100%;height: 100%;object-fit: cover;}
+
+.pagination {margin: 28px auto 100px auto;}
+.pagination ul {justify-content: center;width: 100%;}
+.pagination ul li {display: block;padding: 0 8px;}
+.pagination ul li a {font-size: 14px;}
+
+.scription-wrap {padding: 0 10%;}
+.scription-wrap ul li {justify-content: flex-start;padding: 20px 0;border-bottom: 1px solid #eee;margin-top: -1px;}
+.scription-wrap ul li span {display: inline-block;width: 20%;color: #757575;font-weight: 700;}
+.scription-wrap ul li p {color: #222;max-width: 80%;}

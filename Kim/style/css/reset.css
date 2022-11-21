@@ -21,7 +21,7 @@ input[type="text"], input[type="password"]{-webkit-appearance:none}
 input {-webkit-border-radius:0}
 input:checked[type="checkbox"]{-webkit-appearance:checkbox}
 input[type="radio"]{border:none;-webkit-appearance:none}
-button,input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]{-webkit-appearance:button;border-radius:0;outline:none;cursor:pointer;border:none;background:none;font-size:1em;}
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]{-webkit-appearance:button;border-radius:0;outline:none;cursor:pointer;border:none;font-size:1em;}
 select::-ms-expand {display: none;}
 select {display:inline-block;position:relative;height:48px;line-height:46px;background:#fff url(../images/ico/select_off.svg) no-repeat center right 15px;padding:0 32px 0 16px;border:1px solid #949494;font-size:14px;cursor:pointer;-webkit-appearance: none;-moz-appearance: none;appearance: none;color:#535353;}
 select:focus {outline:none;border:1px solid #9fa8bc;}
