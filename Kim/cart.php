@@ -54,7 +54,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <input type="checkbox" id="cart-all" class="check-all">
+                                <input type="checkbox" id="cart-all" class="check-all" >
                                 <label for="cart-all"></label>
                             </th>
                             <th></th>
@@ -67,15 +67,18 @@
                    <?php
                         $uid = $_SESSION["userId"];
                         $query = $PDO->query("select * from product, basket, category where product.p_code = basket.p_code and product.c_code = category.c_code and basket.uID = '$uid'");
-                        while($row = $query->fetch()) { ?>
+                        while($row = $query->fetch()) {   
+                        ?>
                     <tbody>
                         <tr>
                             <td>
-                                <input type="checkbox" id="cart-all" class="check-all" value="<?= $row['p_code']?>">
-                                <label for="cart-all"></label>
+                                <input type="checkbox" id="cart-all" class="check-all" name="p_check">
+                                <label  for="cart-all"></label>
                             </td>
                             <td></td>
-                            <td style="text-align:left;padding-left:24px;">제품 정보</td>
+                            <td style="text-align:left;padding-left:24px;">
+                                <input type="text" value="<?=$row['p_code']?>" id="p_p" style="display:none">
+                            </td>
                             <td>
                                 <div class="amount-wrap">
                                     <button type="button" class="amount minus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_minus_gray.svg" alt="minus"></button>
@@ -98,15 +101,15 @@
             </form>
         </div>
         <div class="table-button">
-            <button class="border-btn">선택 삭제</button>
-            <button class="border-btn">선택 찜하기</button>
+            <button class="border-btn del-btn" type="button">선택 삭제</button>
+            <button class="border-btn" type="button">선택 찜하기</button>
         </div>
         <div class="cart-total">
             <ul class="total-wrap flex">
                 <li><p>선택제품<span>0</span></p></li>
-                <li><p>제품합계<span>￦ 0</span></p></li>
-                <li><p>+ 배송비<span>￦ 0</span></p></li>
-                <li><p>= 주문금액<span>￦ 0</span></p></li>
+                <li><p>제품합계<span>￦</span><span>0</span></p></li>
+                <li><p>+ 배송비<span>￦ 3500</span></p></li>
+                <li><p>= 주문금액<span>￦</span><span>0</span></p></li>
             </ul>
         </div>
         <div class="cart-notice">
@@ -118,58 +121,99 @@
             <button class="black-btn">주문하기</button>
         </div>
     </section>
-
-    
-    <script>
-      /*  function count(type) {
-            
-            var price = $('.cart_t > tbody td').eq(4).text();
-            price = price.replace(",", "");
-            const amount = document.getElementById("amount-result");
-            let num = amount.value;
-
-            var total = document.getElementById("total-price");
-
-            if(type === "plus") {
-                num = parseInt(num) + 1;
-            } else if(type === "minus" && num > 1) {
-                num = parseInt(num) - 1;
-            }
-
-            amount.value = num;
-            $("#total-price").text((price * num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-        }*/
- 
-        
-
-        $(document).ready(function() {
+    <?php require_once("./component/footer.php");?>
+    <script>      
+        $(".minus").click(function() {
             var thisRow = $(this).closest('tr');
             var price = thisRow.find('td:eq(4)').find('span').text();
             price = price.replace("," , "");     
             const amount = thisRow.find('td:eq(3)').find('input');
             let num = amount.val();
-            
-            $(".minus").click(function() {
-                if(num > 1) {
-                    num = parseInt(num) - 1;
-                }
-                amount.val(num);
-                var total_p = thisRow.find('td:eq(5)').find('span');
-                total_p.text((price * num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-            });
-
-            $(".plus").click(function() {
-                num = parseInt(num) + 1;
-                amount.val(num);
-                var total_p = thisRow.find('td:eq(5)').find('span');
-                total_p.text((price * num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-            });
+            if(num > 1) {
+                num = parseInt(num) - 1;
+            }
+            amount.val(num);
+            var total_p = thisRow.find('td:eq(5)').find('span');
+            total_p.text((price * num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         });
 
+        $(".plus").click(function() {
+            var thisRow = $(this).closest('tr');
+            var price = thisRow.find('td:eq(4)').find('span').text();
+            price = price.replace("," , "");     
+            const amount = thisRow.find('td:eq(3)').find('input');
+            let num = amount.val();
+            num = parseInt(num) + 1;
+            amount.val(num);
+            var total_p = thisRow.find('td:eq(5)').find('span');
+            total_p.text((price * num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        });
+
+        $(".check-all").change(function(){
+
+            if($(this).is(":checked")){ 
+                let num = $('.total-wrap li:nth-child(1) span').text();
+                var thisRow = $(this).closest('tr');
+                var price = thisRow.find('td:eq(5)').find('span').text().replace("," , "");
+                var total_price = $('.total-wrap li:nth-child(2) span:nth-child(2)').text().replace("," , "");
+                total_price = parseInt(total_price) + parseInt(price);
+                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                num = parseInt(num) + 1;
+                $('.total-wrap li:nth-child(1) span').text(num+"개");
+                var tt_p = $('.total-wrap li:nth-child(4) span:nth-child(2)').text().replace("," , "");
+                tt_p = parseInt(total_price) + 3500;
+                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(tt_p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            }else{
+                let num = $('.total-wrap li:nth-child(1) span').text();
+                var thisRow = $(this).closest('tr');
+                var price = thisRow.find('td:eq(5)').find('span').text().replace("," , "");
+                var total_price = $('.total-wrap li:nth-child(2) span:nth-child(2)').text().replace("," , "");              
+                total_price = parseInt(total_price) - parseInt(price);
+                if (total_price < 0 ){
+                    total_price = 0;
+                }
+                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                num = parseInt(num) - 1;
+                var tt_p = $('.total-wrap li:nth-child(4) span:nth-child(2)').text().replace("," , "");
+                
+                if (num <= 0 ){
+                    num=0;
+                    $('.total-wrap li:nth-child(1) span').text(num);
+                    tt_p = 0;
+                }else{
+                    $('.total-wrap li:nth-child(1) span').text(num+"개");
+                    tt_p = parseInt(total_price) + 3500;           
+                }
+                
+                
+                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(tt_p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            }
+
+        });      
+        
+        $(".del-btn").click(function() {
+            var rowData = new Array();
+			var tdArr = new Array();
+			var checkbox = $("input[name=p_check]:checked");
+
+            checkbox.each(function(i) {
+	
+                // checkbox.parent() : checkbox의 부모는 <td>이다.
+                // checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+                var tr = checkbox.parent().parent().eq(i);
+                var td = tr.children();
+
+                rowData.push(tr.text());
+
+                var no = td.eq(2).find('input').val();
+           
+                tdArr.push(no);
+            });
+
+            location.assign("cart_del.php?p="+tdArr);
+        });
         
     </script>
-
-    <?php require_once("./component/footer.php");?>
    
 </body>
 
