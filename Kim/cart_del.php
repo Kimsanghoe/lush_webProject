@@ -1,10 +1,12 @@
 <?php 
     session_start();
-
-
-
-	//require("db_connect.php");
+	require("php/db_connect.php");
 	$p_code = $_REQUEST["p"];
+    $p_codes = explode(",", $p_code);
+    foreach($p_codes as $value){
+        $PDO->exec("delete from basket where p_code=$value");
+    }
 
-    echo $p_code;
+    header("Location:cart.php");
+  
 ?>

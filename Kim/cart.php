@@ -3,10 +3,10 @@
         session_start();
     }
     if(empty($_SESSION["userId"])){?>
-        <script>
+        <!-- <script>
             alert('로그인 후 진행 해주세요.');
             history.back();
-        </script>
+        </script> -->
 <?php } ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <input type="checkbox" id="cart-all" class="check-all" >
+                                <input type="checkbox" id="cart-all" class="check-box">
                                 <label for="cart-all"></label>
                             </th>
                             <th></th>
@@ -64,30 +64,34 @@
                             <th>합계금액</th>
                         </tr>
                     </thead>
-                   <?php
+                    <?php
                         $uid = $_SESSION["userId"];
                         $query = $PDO->query("select * from product, basket, category where product.p_code = basket.p_code and product.c_code = category.c_code and basket.uID = '$uid'");
                         while($row = $query->fetch()) {   
                         ?>
                     <tbody>
                         <tr>
-                            <td>
-                                <input type="checkbox" id="cart-all" class="check-all" name="p_check">
+                            <td class="item-checkbox">
+                                <input type="checkbox" id="cart-all" class="check-box" name="p_check">
                                 <label  for="cart-all"></label>
                             </td>
-                            <td></td>
-                            <td style="text-align:left;padding-left:24px;">
-                                <input type="text" value="<?=$row['p_code']?>" id="p_p" style="display:none">
+                            <td class="item-image">
+                                <img src="<?=$row['p_img1']?>" alt="none">
                             </td>
-                            <td>
+                            <td class="item-text">
+                                 <input type="text" value="<?=$row['p_code']?>" id="p_p" style="display:none">
+                                <p><?=$row['p_name']?></p>
+                                <p><?=$row['c_name']?></p>
+                            </td>
+                            <td class="item-amount">
                                 <div class="amount-wrap">
                                     <button type="button" class="amount minus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_minus_gray.svg" alt="minus"></button>
                                     <input type="text" maxlength="3" value="<?=$row['p_quantity'] ?>" id="amount-result">
                                     <button type="button" class="amount plus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_plus_black.svg" alt="plus"></button>
-                                </div>                 
+                                </div>
                             </td>
-                            <td><span><?=number_format($row['r_price']) ?></span></td>
-                            <td>
+                            <td class="item-price"><span><?=number_format($row['r_price']) ?></span></td>
+                            <td class="item-result">
                                 <?php 
                                     $total = $row['r_price'] * $row['p_quantity'];
                                     $total = number_format($total);
@@ -108,7 +112,7 @@
             <ul class="total-wrap flex">
                 <li><p>선택제품<span>0</span></p></li>
                 <li><p>제품합계<span>￦</span><span>0</span></p></li>
-                <li><p>+ 배송비<span>￦ 3500</span></p></li>
+                <li><p>+ 배송비<span>￦ 3,500</span></p></li>
                 <li><p>= 주문금액<span>￦</span><span>0</span></p></li>
             </ul>
         </div>
@@ -149,73 +153,85 @@
             total_p.text((price * num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         });
 
-        $(".check-all").change(function(){
-
-            if($(this).is(":checked")){ 
-                let num = $('.total-wrap li:nth-child(1) span').text();
-                var thisRow = $(this).closest('tr');
-                var price = thisRow.find('td:eq(5)').find('span').text().replace("," , "");
-                var total_price = $('.total-wrap li:nth-child(2) span:nth-child(2)').text().replace("," , "");
-                total_price = parseInt(total_price) + parseInt(price);
-                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-                num = parseInt(num) + 1;
-                $('.total-wrap li:nth-child(1) span').text(num+"개");
-                var tt_p = $('.total-wrap li:nth-child(4) span:nth-child(2)').text().replace("," , "");
-                tt_p = parseInt(total_price) + 3500;
-                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(tt_p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-            }else{
-                let num = $('.total-wrap li:nth-child(1) span').text();
-                var thisRow = $(this).closest('tr');
-                var price = thisRow.find('td:eq(5)').find('span').text().replace("," , "");
-                var total_price = $('.total-wrap li:nth-child(2) span:nth-child(2)').text().replace("," , "");              
-                total_price = parseInt(total_price) - parseInt(price);
-                if (total_price < 0 ){
-                    total_price = 0;
-                }
-                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-                num = parseInt(num) - 1;
-                var tt_p = $('.total-wrap li:nth-child(4) span:nth-child(2)').text().replace("," , "");
-                
-                if (num <= 0 ){
-                    num=0;
-                    $('.total-wrap li:nth-child(1) span').text(num);
-                    tt_p = 0;
-                }else{
-                    $('.total-wrap li:nth-child(1) span').text(num+"개");
-                    tt_p = parseInt(total_price) + 3500;           
-                }
-                
-                
-                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(tt_p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-            }
-
-        });      
-        
-        $(".del-btn").click(function() {
+        $(".check-box").change(function() {
             var rowData = new Array();
-			var tdArr = new Array();
-			var checkbox = $("input[name=p_check]:checked");
+            var tdArr = new Array();
+            var checkbox = $("input[name=p_check]:checked");
 
             checkbox.each(function(i) {
-	
-                // checkbox.parent() : checkbox의 부모는 <td>이다.
-                // checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+                var tr = checkbox.parent().parent().eq(i);
+                var td = tr.children();
+                rowData.push(tr.text());
+                var no = td.eq(5).find('span').text().replace("," , "");
+                tdArr.push(no);
+                sum = 0;
+                tdArr.forEach( (item) => {
+                    sum += parseInt(item);
+                });
+            
+                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                if(sum != 0){
+                sum = sum + 3500;
+                }
+                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));             
+            });  
+
+             
+        })
+
+        $(".del-btn").click(function() {
+            var rowData = new Array();
+            var tdArr = new Array();
+            var checkbox = $("input[name=p_check]:checked");
+
+            checkbox.each(function(i) {
                 var tr = checkbox.parent().parent().eq(i);
                 var td = tr.children();
 
                 rowData.push(tr.text());
+               
 
                 var no = td.eq(2).find('input').val();
-           
+                console.log(no);
+               
+                
                 tdArr.push(no);
             });
 
-            location.assign("cart_del.php?p="+tdArr);
+           location.assign("cart_del.php?p="+tdArr);
         });
-        
+
+        var totalCheck = $("input[name=p_check]").length;
+        $("#cart-all").click(function() {
+            if($("#cart-all").is(":checked")) {
+                $("input[name=p_check]").prop("checked", true);
+                totalCheck = $("input[name=p_check]").length;
+                checked = totalCheck;
+                $(".total-wrap li:nth-child(1) span").text(totalCheck);
+            } else {
+                $("input[name=p_check]").prop("checked", false);
+                checked = 0;
+                $(".total-wrap li:nth-child(1) span").text(checked);
+                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(0);
+                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(0); 
+            }
+
+        });
+        $("input[name=p_check]").click(function() {
+            var checked = $("input[name=p_check]:checked").length;
+
+            if(totalCheck != checked) {
+                $("#cart-all").prop("checked", false);
+                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(0);
+                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(0); 
+            } else {
+                $("#cart-all").prop("checked", true); 
+            }
+
+            $(".total-wrap li:nth-child(1) span").text(checked);
+        });
+
+       
     </script>
-   
 </body>
-
-
 </html>

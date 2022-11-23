@@ -18,9 +18,17 @@
 
 .cart-table form table{width: 100%;}
 .cart-table form table thead tr th{border-bottom: 1px solid #eee;font-size: 16px;color: #757575;font-weight: 400;height: 70px;vertical-align: middle;padding: 20px 0;}
-.cart-table form table thead tr th input[type="checkbox"]{width: 20px;height: 20px;cursor: pointer;accent-color: #222;}
-.cart-table form table tbody tr td{padding: 200px 0;text-align: center;border-bottom: 1px solid #eee;}
-.cart-table form table tbody tr td .subtitle{font-size: 18px;}
+.check-box{width: 20px;height: 20px;cursor: pointer;accent-color: #222;}
+
+.cart-table form table tbody tr {height: 100px;}
+.cart-table form table tbody tr td {border-bottom: 1px solid #eee;font-size: 16px;padding: 16px 0;vertical-align: middle;text-align: center;margin-top: -1px;}
+.cart-table form table tbody tr .item-image {padding: 16px 0;}
+.cart-table form table tbody tr .item-image img {width: 100px;background-color: #f6f6f6;}
+.cart-table form table tbody tr .item-text {text-align: left;padding: 16px 24px;}
+.cart-table form table tbody tr .item-text > p:first-of-type {color: #222;font-size: 18px;}
+.cart-table form table tbody tr .item-text > p:last-of-type {color: #757575;font-size: 16px;}
+.cart-table form table tbody tr .item-amount > .amount-wrap .amount {background: none;width: 24px;height: 24px;}
+.cart-table form table tbody tr .item-amount > .amount-wrap input[type="text"] {width: 50px;height: 24px;border: none;outline: none;text-align: center;font-size: 18px;}
 
 .table-button{margin: 30px auto 48px auto;}
 .table-button button{padding: 10px 16px;font-size: 14px;margin-right: 10px;}
