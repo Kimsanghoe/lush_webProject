@@ -30,26 +30,26 @@
             <div class="category_depth clearbox">
                 <ul class="list">
                     <li class="item">HOME</li>
-                    <li> &nbsp;>&nbsp; </li>
+                    <li>&nbsp;>&nbsp;</li>
                     <li class="item">제품</li>
-                    <li> &nbsp;>&nbsp; </li>            
-                    <li class='item'>베스트</li>   
+                    <li>&nbsp;>&nbsp;</li>
+                    <li class='item'>베스트</li>
                 </ul>
             </div>
             <div class="goods_list_top clearbox">
                 <div class="goods_list_summary">
-                    <span class="sort_item on"><a href="">전체</a></span>
-                    <span class="sort_item "><a href="">best50</a></span>
-                    <span class="sort_item "><a href="">주간 베스트</a></span>
-                    <span class="sort_item "><a href="">국내제조</a></span>
-                    <span class="sort_item "><a href="">네이키드</a></span>
-                    <span class="sort_item "><a href="">러쉬 아트 큐레이션</a></span>
+                    <span class="sort_item on"><a href="#">전체</a></span>
+                    <span class="sort_item "><a href="#">best50</a></span>
+                    <span class="sort_item "><a href="#">주간 베스트</a></span>
+                    <span class="sort_item "><a href="#">국내제조</a></span>
+                    <span class="sort_item "><a href="#">네이키드</a></span>
+                    <span class="sort_item "><a href="#">러쉬 아트 큐레이션</a></span>
                 </div>
                 <div class="goods_list_sort">
-                    <span class="sort_item "><a href="">추천순</a></span>
-                    <span class="sort_item "><a href="">최신순</a></span>
-                    <span class="sort_item "><a href="">낮은가격순</a></span>
-                    <span class="sort_item "><a href="">높은가격순</a></span>
+                    <span class="sort_item "><a href="#">추천순</a></span>
+                    <span class="sort_item "><a href="#">최신순</a></span>
+                    <span class="sort_item "><a href="#">낮은가격순</a></span>
+                    <span class="sort_item "><a href="#">높은가격순</a></span>
                 </div>
             </div>
             <div class="list">
@@ -69,20 +69,20 @@
                 ?>
                 <li class="list-item " style="position:absolute;left:<?=$left?>px;top:<?=$top?>px;">
                     <div class="item">
-                        <a href="../../products/view/G210000031279d8f.html?dc=standard" class="prd-img-box"><img src="<?=$row["p_img1"]?>" class="prd-img" alt="<?=$row["p_name"]?>"></a>
+                        <a href="product_view.php?p=<?= $row["p_code"]?>" class="prd-img-box"><img src="<?=$row["p_img1"]?>" class="prd-img" alt="<?=$row["p_name"]?>"></a>
                         <div class="tag-box flex center">
                         <?php //p_img2,p_img3가 다 있을경우
                             if($row["p_img2"] && $row["p_img3"]){
                         ?>
-                            <a href="javascript:;"><img src="<?=$row["p_img2"]?>" alt="none"></a>
-                            <a href="javascript:;"><img src="<?=$row["p_img3"]?>" alt="none"></a>
+                            <a href="javascript:;"><img src="<?= $row["p_img2"]?>" alt="none"></a>
+                            <a href="javascript:;"><img src="<?= $row["p_img3"]?>" alt="none"></a>
                         <?php } elseif($row["p_img2"]){ //p_img2만 있는 경우 ?> 
-                            <a href="javascript:;"><img src="<?=$row["p_img2"]?>" alt="none"></a>
+                            <a href="javascript:;"><img src="<?= $row["p_img2"]?>" alt="none"></a>
                         <?php } else {echo "";} ?>
                         </div>
-                        <a href="../../products/view/G210000031279d8f.html?dc=standard" class="name"><?=$row["p_name"]?></a>
-                        <a href="../../products/view/G210000031279d8f.html?dc=standard" class="cate"><?=$row["c_name"]?></a>
-                        <a href="../../products/view/G210000031279d8f.html?dc=standard" class="price">￦<?=$row["r_price"]?></a>
+                        <a href="product_view.php?p=<?= $row["p_code"]?>" class="name"><?=$row["p_name"]?></a>
+                        <a href="product_view.php?p=<?= $row["p_code"]?>" class="cate"><?=$row["c_name"]?></a>
+                        <a href="product_view.php?p=<?= $row["p_code"]?>" class="price">￦<?=$row["r_price"]?></a>
                         <div class="item-mask" style="display: none; opacity: 1;"></div>
                     </div>
                     <div class="buttons" style="display: none; opacity: 1;">
@@ -90,16 +90,15 @@
                         <button type="button" name="cartBtn" onclick="Shop.addToCart('1000003127', '1', '1', 'false', '/categories/index/113','1', 'false', 'N')" class="basket">장바구니 담기</button>
                     </div>
                 </li>
-                <?php 
-                    $left = $left + 312;
-                    $cnt = $cnt + 1;
+                <?php
+                        $left = $left + 312;
+                        $cnt = $cnt + 1;
 
-                    if($cnt == 4) {
-                        $top = $top + 464;
-                        $left = 0;
-                        $cnt = 0;
-                    }
-
+                        if($cnt == 4) {
+                            $top = $top + 464;
+                            $left = 0;
+                            $cnt = 0;
+                        }
                     }
                 ?>
                 </ul>

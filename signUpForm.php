@@ -1,6 +1,4 @@
 <?php
-    // session_start();
-    // require_once("./php/check_id.php");
     require("./php/db_connect.php");
 ?>
 
