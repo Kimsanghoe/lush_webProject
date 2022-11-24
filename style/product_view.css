@@ -52,9 +52,9 @@
 .product-recommend {width: 100%;}
 .product-recommend .product-recommend-body {display: block;width: 30%;padding: 0 30px;}
 .product-recommend .product-recommend-body img {width: 100px;}
-.product-recommend .product-recommend-body h3 {margin: 16px auto 8px auto;font-size: 32px;color: #222;}
+.product-recommend .product-recommend-body h3 {margin: 16px auto 8px auto;font-size: 30px;color: #222;}
 .product-recommend .product-recommend-body p:first-of-type {columns: #757575;margin-bottom: 20px;}
-.product-recommend .product-recommend-body p:last-of-type {color: #535353;}
+.product-recommend .product-recommend-body p:last-of-type {color: #535353;font-size: 14px;}
 .product-recommend .product-recommend-body span {display: block;margin-top: 8px;}
 .product-recommend .product-recommend-img {width: 70%;}
 .product-recommend .product-recommend-img img {width: 100%;}

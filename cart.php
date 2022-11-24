@@ -123,7 +123,7 @@
         </div>
         <div class="cart-button-wrap flex">
             <button class="border-btn">쇼핑 계속하기</button>
-            <button class="black-btn">주문하기</button>
+            <button class="black-btn" onclick="location.href='/rnk/orderComplete.php'">주문하기</button>
         </div>
     </section>
 

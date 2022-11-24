@@ -22,4 +22,4 @@
 }
 .sidebar-item > ul {margin-left: 50%;transform: translateX(-30%);}
 .sidebar-item > ul li {padding: 2px 0;font-weight: 300;}
-.sidebar-item > ul li a:hover{color: #18a957;}
+.sidebar-item > ul li a:hover{color: #18a957;font-weight: 500;}

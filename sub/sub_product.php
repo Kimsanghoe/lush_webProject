@@ -104,35 +104,38 @@
                 </ul>
             </div>
             <?php 
-                $paginationSize = 5;
+                $paginationSize = 3;
                 $firstLink = floor(($page - 1) / $paginationSize) * $paginationSize + 1;
                 $lastLink = $firstLink + $paginationSize -1;
+
                 $totalPage = ceil($numRecords /$listSize);
-                
+
                 if ($lastLink > $totalPage) {
                     $lastLink = $totalPage;
                 }
             ?>
-            <div class='pagination' style="width:680px;text-align:center;margin:0 auto;">
-                <?php
-                    if($firstLink > 1) {
-                        $move = $lastLink - 1;
-                        echo "<a href=sub_product.php?page={$move}&cate={$cate} class='aaa'>&lt</a>";
-                    }
-
-                    for($i = $firstLink; $i <= $lastLink; $i++) {
-                        if($i == $page) {
-                            echo "<a href=sub_product.php?page={$i}&cate={$cate}><u>$i</u></a>";
-                        } else {
-                            echo "<a href=sub_product.php?page={$i}&cate={$cate}>$i</a>";
+            <div class="pagination">
+                <ul class="flex">
+                    <?php
+                        if($firstLink > 1) {
+                            $move = $firstLink - 1;
+                            echo "<li><a href=sub_product.php?page={$move}&cate={$cate}>&lt</a></li>";
                         }
-                    }
 
-                    if($lastLink < $totalPage) {
-                        $move = $lastLink + 1;
-                        echo "<a href=sub_product.php?page={$move}&cate={$cate}>&gt</a>";
-                    }
-                ?>
+                        for($i = $firstLink; $i <= $lastLink; $i++) {
+                            if($i == $page) {
+                                echo "<li><a href=sub_product.php?page={$i}&cate={$cate}><b>$i</b></a></li>";
+                            } else {
+                                echo "<li><a href=sub_product.php?page={$i}&cate={$cate}>$i</a></li>";
+                            }
+                        }
+
+                        if($lastLink < $totalPage) {
+                            $move = $lastLink + 1;
+                            echo "<li><a href=sub_product.php?page={$move}&cate={$cate}>&gt</a></li>";
+                        }
+                    ?>
+                </ul>
             </div>
         </div>
     </article>
