@@ -1,12 +1,13 @@
-<?php 
-    if(session_id() == ''){
-        session_start();
-    }
-    if(empty($_SESSION["userId"])){?>
-        <!-- <script>
+<?php
+    require("./php/db_connect.php");
+
+    session_start();
+
+    if(empty($_SESSION["userId"])) {?>
+        <script>
             alert('로그인 후 진행 해주세요.');
             history.back();
-        </script> -->
+        </script>
 <?php } ?>
 
 <!DOCTYPE html>
@@ -23,8 +24,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/ico/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/ico/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/ico/favicon-16x16.png">
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>R & K</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php require_once("./component/header.php");?>
@@ -33,7 +34,6 @@
         <div class="cart-title">
             <h1>장바구니</h1>
         </div>
-        <?php require("php/db_connect.php");?>
         <div class="cart-tab">
             <ul class="tab-btn flex">
                 <li><a href="#" class="on">일반배송 (0)</a></li>
@@ -41,8 +41,8 @@
             </ul>
         </div>
         <div class="cart-table">
-            <form>
-                <table class="cart_t">
+            <form action="#">
+                <table>
                     <colgroup>
                         <col width="84px">
                         <col width="100px">
@@ -67,26 +67,27 @@
                     <?php
                         $uid = $_SESSION["userId"];
                         $query = $PDO->query("select * from product, basket, category where product.p_code = basket.p_code and product.c_code = category.c_code and basket.uID = '$uid'");
-                        while($row = $query->fetch()) {   
-                        ?>
+                        
+                        while($row = $query->fetch()) {
+                    ?>
                     <tbody>
                         <tr>
                             <td class="item-checkbox">
                                 <input type="checkbox" id="cart-all" class="check-box" name="p_check">
-                                <label  for="cart-all"></label>
+                                <label for="cart-all"></label>
                             </td>
                             <td class="item-image">
                                 <img src="<?=$row['p_img1']?>" alt="none">
                             </td>
                             <td class="item-text">
-                                 <input type="text" value="<?=$row['p_code']?>" id="p_p" style="display:none">
+                                <input type="text" value="<?=$row['p_code']?>" id="p_p" style="display:none">
                                 <p><?=$row['p_name']?></p>
                                 <p><?=$row['c_name']?></p>
                             </td>
                             <td class="item-amount">
                                 <div class="amount-wrap">
                                     <button type="button" class="amount minus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_minus_gray.svg" alt="minus"></button>
-                                    <input type="text" maxlength="3" value="<?=$row['p_quantity'] ?>" id="amount-result">
+                                    <input type="text" maxlength="3" value="<?=$row['p_quantity']?>" id="amount-result">
                                     <button type="button" class="amount plus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_plus_black.svg" alt="plus"></button>
                                 </div>
                             </td>
@@ -121,16 +122,18 @@
             <p>* 장바구니제품이 품절되면 자동으로 목록에서 삭제됩니다.</p>
         </div>
         <div class="cart-button-wrap flex">
-            <button class="border-btn">쇼핑 계속하기</button>
-            <button class="black-btn">주문하기</button>
+            <button class="border-btn">쇼핑 계속하기</button>          
+            <button class="black-btn" type="button">주문하기</button>     
         </div>
     </section>
+     
     <?php require_once("./component/footer.php");?>
-    <script>      
+
+    <script>
         $(".minus").click(function() {
             var thisRow = $(this).closest('tr');
             var price = thisRow.find('td:eq(4)').find('span').text();
-            price = price.replace("," , "");     
+            price = price.replace("," , "");
             const amount = thisRow.find('td:eq(3)').find('input');
             let num = amount.val();
             if(num > 1) {
@@ -168,16 +171,16 @@
                 tdArr.forEach( (item) => {
                     sum += parseInt(item);
                 });
-            
-                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-                if(sum != 0){
-                sum = sum + 3500;
-                }
-                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));             
-            });  
 
-             
-        })
+                $('.total-wrap li:nth-child(2) span:nth-child(2)').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                
+                if(sum != 0) {
+                    sum = sum + 3500;
+                }
+                
+                $('.total-wrap li:nth-child(4) span:nth-child(2)').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            });  
+        });
 
         $(".del-btn").click(function() {
             var rowData = new Array();
@@ -187,18 +190,12 @@
             checkbox.each(function(i) {
                 var tr = checkbox.parent().parent().eq(i);
                 var td = tr.children();
-
                 rowData.push(tr.text());
-               
-
                 var no = td.eq(2).find('input').val();
-                console.log(no);
-               
-                
                 tdArr.push(no);
             });
 
-           location.assign("cart_del.php?p="+tdArr);
+            location.assign("php/cart_del.php?p="+tdArr);
         });
 
         var totalCheck = $("input[name=p_check]").length;
@@ -215,11 +212,10 @@
                 $('.total-wrap li:nth-child(2) span:nth-child(2)').text(0);
                 $('.total-wrap li:nth-child(4) span:nth-child(2)').text(0); 
             }
-
         });
+
         $("input[name=p_check]").click(function() {
             var checked = $("input[name=p_check]:checked").length;
-
             if(totalCheck != checked) {
                 $("#cart-all").prop("checked", false);
                 $('.total-wrap li:nth-child(2) span:nth-child(2)').text(0);
@@ -231,7 +227,27 @@
             $(".total-wrap li:nth-child(1) span").text(checked);
         });
 
-       
+        $(".black-btn").click(function() {
+            var rowData = new Array();
+            var p = new Array();
+            var q = new Array();
+            var checkbox = $("input[name=p_check]:checked");
+            var totalp = new Array();
+            
+            checkbox.each(function(i) {
+                var tr = checkbox.parent().parent().eq(i);
+                var td = tr.children();
+                rowData.push(tr.text());
+                var no = td.eq(2).find('input').val();
+                var qun = td.eq(3).find('input').val();
+                var pr = td.eq(5).find('span').text();
+                pr = pr.replace("," , "");
+                p.push(no);
+                q.push(qun);
+                totalp.push(pr);   
+            });
+            location.assign("/rnk/order_add.php?p="+p+"&q="+q+"&tp="+totalp);
+        });
     </script>
 </body>
 </html>

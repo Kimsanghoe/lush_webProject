@@ -107,10 +107,10 @@
                 <li><a href="javascript:;">배송/반품/교환 안내</a></li>
                 <li><a href="javascript:;">상품필수정보</a></li>
             </ul>
-            <div class="detail-view">
+            <div class="detail-view on">
                 <div class="product-title">
-                    <p class="mini-name"><?= $row['p_name']?></p>
-                    <h2 class="product-name"><?= $row['c_name']?></h2>
+                    <p class="mini-name"><?= $row['c_name']?></p>
+                    <h2 class="product-name"><?= $row['p_name']?></h2>
                     <p class="mini-name"><?= $row['p_d_mini_name']?></p>
                 </div>
                 <div class="product-section">
@@ -132,7 +132,7 @@
                     </div>
                     <div class="product-banner"><img src="<?= $row['p_d_img6']?>" alt="none"></div>
                     <ul class="product-recommend flex">
-                        <li class="product-recommend-img"><img src="https://img.lush.co.kr/product/body/maskofmagnanminty_use.jpg" alt="none"></li>    
+                        <li class="product-recommend-img"><img src="<?= $row['p_d_img6_1']?>" alt="none"></li>    
                         <li class="product-recommend-body" style="text-align: right;">
                             <h3>사용 방법</h3>
                             <p>
@@ -192,34 +192,36 @@
                             </p>
                         </div>
                     </div>
-                    <div class="product-qna">
-                        <h3>Q & A</h3>
-                        <ul>
-                            <li>
-                                <p><?=$row['p_d_q_1']?></p>
-                                <p>
-                                    <?= $row['p_d_a_1']?>
-                                </p>
-                            </li>
-                            <?php if($row['p_d_q_2']){ ?>
+                    <?php if($row['p_d_q_1']){ ?>
+                        <div class="product-qna">
+                            <h3>Q & A</h3>
+                            <ul>
                                 <li>
-                                <p><?= $row['p_d_q_2']?></p>
-                                <p>
-                                    <?= $row['p_d_a_2']?>
-                                </p>
-                            </li>
-                            <?php } ?>
-                            <?php if($row['p_d_q_3']){ ?>
-                                <li>
-                                <p><?= $row['p_d_q_3']?></p>
-                                <p>
-                                    <?= $row['p_d_a_3']?>
-                                </p>
-                            </li>
-                            <?php } ?>
-                            
-                        </ul>
-                    </div>
+                                    <p><?=$row['p_d_q_1']?></p>
+                                    <p>
+                                        <?= $row['p_d_a_1']?>
+                                    </p>
+                                </li>
+                                <?php if($row['p_d_q_2']){ ?>
+                                    <li>
+                                    <p><?= $row['p_d_q_2']?></p>
+                                    <p>
+                                        <?= $row['p_d_a_2']?>
+                                    </p>
+                                </li>
+                                <?php } ?>
+                                <?php if($row['p_d_q_3']){ ?>
+                                    <li>
+                                    <p><?= $row['p_d_q_3']?></p>
+                                    <p>
+                                        <?= $row['p_d_a_3']?>
+                                    </p>
+                                </li>
+                                <?php } ?>
+                                
+                            </ul>
+                        </div>
+                    <?php  } ?>
                 </div>
             </div>
             <div class="detail-view">
@@ -356,7 +358,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="detail-view on">
+            <div class="detail-view">
                 <div class="scription-wrap">
                     <ul>
                         <li class="flex">

@@ -3,7 +3,7 @@
     <div class="sidebar-item">
         <p>쇼핑정보</p>
         <ul>
-            <li><a href="#">주문/배송 조회</a></li>
+            <li><a href="/rnk/orderInquiry.php">주문/배송 조회</a></li>
         </ul>
     </div>
     <div class="sidebar-item">

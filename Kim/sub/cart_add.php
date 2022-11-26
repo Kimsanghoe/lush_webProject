@@ -21,8 +21,8 @@
 				window.history.back();
 			</script>";
 	}
-   	/*header("Location:product_view.php?p=".$p);
-	exit;*/
+   	header("Location:product_view.php?p=".$p);
+	exit;
 	}
  
 

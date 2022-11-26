@@ -5,8 +5,8 @@
 	$p_code = $_REQUEST["p_code"];
 	$PDO->exec("delete from product where p_code=$p_code");	
 	
-	/*header("Location:p_management.php?site=".$_SESSION["site_set"]);
-	exit;*/
+	header("Location:p_management.php?site=".$_SESSION["site_set"]);
+	exit;
 ?>
 <!--위 조건에 만족 하지 않을때만 아래가 실행된다.-->
 <!DOCTYPE html>
