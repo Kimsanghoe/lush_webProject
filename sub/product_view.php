@@ -99,7 +99,7 @@
                     <div class="button-wrap flex">
                         <button class="like-btn border-btn">좋아요</button>
                         <button type="submit" class="cart-btn border-btn" value=<?=$product?>>장바구니</button>
-                        <button class="buy-btn black-btn">바로 구매</button>
+                        <button type="submit" class="buy-btn black-btn">바로 구매</button>
                     </div>
                 </div>
             </div>
@@ -239,76 +239,24 @@
                     </div>
                     <div class="review-wrap">
                         <ul>
+                        <?php
+                            $reviewQuery = $PDO->query("SELECT * FROM product_review LEFT JOIN product ON product_review.p_code = product.p_code LEFT JOIN customerinfo ON product_review.uID = customerinfo.uID;");
+                            while($review = $reviewQuery->fetch()) { ?>
                             <li>
                                 <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
+                                    <div class="user flex">
+                                        <div class="profile"><img src="<?=$review['profile']?>" alt="icon"></div>
+                                        <span><?=$review['uNAME']?></span>
+                                    </div>
+                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars<?=$review['rating']?>.svg" alt="stars">
+                                    <span class="date"><?= $review['reviewDate']?></span>
                                 </div>
                                 <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
+                                    <p><?=$review['content']?></p>
                                     <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <div class="pagination">
