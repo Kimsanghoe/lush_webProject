@@ -21,6 +21,7 @@
 .check-box{width: 20px;height: 20px;cursor: pointer;accent-color: #222;}
 
 .cart-table form table tbody tr {height: 100px;}
+.cart-table form table tbody .empty td {padding: 150px 0;}
 .cart-table form table tbody tr td {border-bottom: 1px solid #eee;font-size: 16px;padding: 16px 0;vertical-align: middle;text-align: center;margin-top: -1px;}
 .cart-table form table tbody tr .item-image {padding: 16px 0;}
 .cart-table form table tbody tr .item-image img {width: 100px;background-color: #f6f6f6;}

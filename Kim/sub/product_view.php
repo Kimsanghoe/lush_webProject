@@ -1,4 +1,5 @@
-<?php require("../php/db_connect.php");?>
+<?php require("../php/db_connect.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,43 +21,45 @@
 </head>
 <body>
     <?php require_once("../component/header.php") ?>
-    <?php 
+
+    <?php
         $product = $_REQUEST["p"];
         $query = $PDO->query("select * from product, product_detail, category where product.p_code = product_detail.p_code and product.c_code = category.c_code and product.p_code = $product");
-        while($row = $query->fetch()) { ?>
+        while($row = $query->fetch()) {
+    ?>
     <section id="section" class="container">
         <div class="product-intro flex">
             <div class="image-area">
                 <div class="swiper productMain">
                     <div class="swiper-wrapper">
-                        <?php if($row['p_d_img1']){ ?>
+                    <?php if($row['p_d_img1']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img1']?>" alt="img1"></div>
-                        <?php } ?>
-                        <?php if($row['p_d_img2']){ ?>
+                    <?php } ?>
+                    <?php if($row['p_d_img2']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img2']?>" alt="img2"></div>
-                        <?php } ?>
-                        <?php if($row['p_d_im3']){ ?>
+                    <?php } ?>
+                    <?php if($row['p_d_img3']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img3']?>" alt="img3"></div>
                         <?php } ?>
-                        <?php if($row['p_d_img4']){ ?>
+                    <?php if($row['p_d_img4']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img4']?>" alt="img4"></div>
-                        <?php } ?>
+                    <?php } ?>
                     </div>
                 </div>
                 <div thumbsSlider="" class="swiper productSub" style="margin-top:10px;">
                     <div class="swiper-wrapper">
-                    <?php if($row['p_d_img1']){ ?>
+                    <?php if($row['p_d_img1']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img1']?>" alt="img1"></div>
-                        <?php } ?>
-                        <?php if($row['p_d_img2']){ ?>
+                    <?php } ?>
+                    <?php if($row['p_d_img2']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img2']?>" alt="img2"></div>
-                        <?php } ?>
-                        <?php if($row['p_d_img3']){ ?>
+                    <?php } ?>
+                    <?php if($row['p_d_img3']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img3']?>" alt="img3"></div>
-                        <?php } ?>
-                        <?php if($row['p_d_img4']){ ?>
+                    <?php } ?>
+                    <?php if($row['p_d_img4']) { ?>
                         <div class="swiper-slide"><img src="<?= $row['p_d_img4']?>" alt="img4"></div>
-                        <?php } ?>
+                    <?php } ?>
                     </div>
                 </div>
             </div>
@@ -71,18 +74,19 @@
                     <p class="category"><?= $row['c_name']?></p>
                     <ul class="hash-box flex center">
                         <li>
-                        <?php if($row['p_d_hashtag1']){ ?>
-                         #<?= $row['p_d_hashtag1'] ?>
+                        <?php if($row['p_d_hashtag1']) { ?>
+                            #<?= $row['p_d_hashtag1'] ?>
                         <?php } ?>
-                        <?php if($row['p_d_hashtag2']){ ?>
-                         #<?= $row['p_d_hashtag2'] ?>
-                        <?php } ?> <?php if($row['p_d_hashtag3']){ ?>
-                         #<?= $row['p_d_hashtag3'] ?>
+                        <?php if($row['p_d_hashtag2']) { ?>
+                            #<?= $row['p_d_hashtag2'] ?>
+                        <?php } ?> <?php if($row['p_d_hashtag3']) { ?>
+                            #<?= $row['p_d_hashtag3'] ?>
                         <?php } ?>
                         </li>
                     </ul>
                     <div class="price flex">
-                        <span><?php echo number_format($row['r_price']);?> 원</span><p style="display:none"><?= $row['r_price']?></p>
+                        <span><?= number_format($row['r_price']);?> 원</span>
+                        <p style="display:none"><?= $row['r_price']?></p>
                         <div class="amount-wrap">
                             <button class="amount minus" onclick="count('minus')"><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_minus_gray.svg" alt="minus"></button>
                             <input type="text" maxlength="3" value="1" id="amount-result">
@@ -95,7 +99,7 @@
                     <div class="button-wrap flex">
                         <button class="like-btn border-btn">좋아요</button>
                         <button type="submit" class="cart-btn border-btn" value=<?=$product?>>장바구니</button>
-                        <button class="buy-btn black-btn">바로 구매</button>
+                        <button type="submit" class="buy-btn black-btn">바로 구매</button>
                     </div>
                 </div>
             </div>
@@ -109,8 +113,8 @@
             </ul>
             <div class="detail-view on">
                 <div class="product-title">
-                    <p class="mini-name"><?= $row['c_name']?></p>
-                    <h2 class="product-name"><?= $row['p_name']?></h2>
+                    <p class="mini-name"><?= $row['p_name']?></p>
+                    <h2 class="product-name"><?= $row['c_name']?></h2>
                     <p class="mini-name"><?= $row['p_d_mini_name']?></p>
                 </div>
                 <div class="product-section">
@@ -118,30 +122,25 @@
                         <li class="product-recommend-body">
                             <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
                             <h3><?= $row['p_d_text_h3_1']?></h3>
-                            <p>러쉬코리아 직원 해피피플이 작성한 리뷰입니다</p>
+                            <p>RnK 해피 피플이 작성한 리뷰입니다</p>
                             <p><?= $row['p_d_text_p_1']?></p>
                             <span>by. 스페이스</span>
                         </li>
-                        <li class="product-recommend-img"><img src="<?= $row['p_d_img5']?>" alt="img3"></li>
+                        <li class="product-recommend-img"><img src="<?= $row['p_d_img5']?>" alt="none"></li>
                     </ul>
                     <div class="product-description">
                         <h3><?= $row['p_d_text_h3_2']?></h3>
-                        <p>
-                        <?= $row['p_d_text_p_2']?>
-                        </p>
+                        <p><?= $row['p_d_text_p_2']?></p>
                     </div>
                     <div class="product-banner"><img src="<?= $row['p_d_img6']?>" alt="none"></div>
                     <ul class="product-recommend flex">
-                        <li class="product-recommend-img"><img src="<?= $row['p_d_img6_1']?>" alt="none"></li>    
+                        <li class="product-recommend-img"><img src="https://img.lush.co.kr/product/body/maskofmagnanminty_use.jpg" alt="none"></li>    
                         <li class="product-recommend-body" style="text-align: right;">
                             <h3>사용 방법</h3>
-                            <p>
-                               <?= $row["p_d_text_p_3"] ?>
-                            </p>
-                            <?php if($row['p_d_text_p_4']) {?>
-                                <p>
-                                <?= $row['p_d_text_p_4'] ?>
-                                </p>
+                            <p><?= $row["p_d_text_p_3"]?></p>
+
+                            <?php if($row['p_d_text_p_4']) { ?>
+                                <p><?= $row['p_d_text_p_4']?></p>
                             <?php } ?>
                         </li>
                     </ul>
@@ -149,79 +148,74 @@
                         <h3>제품 성분</h3>
                         <ul class="flex">
                             <li>
-                                <img src="<?= $row['p_d_img7'] ?>" alt="<?= $row['p_d_img7_n'] ?>">
-                                <span><?= $row['p_d_img7_n'] ?></span>
-                                <p><?= $row['p_d_img7_d'] ?></p>
+                                <img src="<?= $row['p_d_img7']?>" alt="none">
+                                <span><?= $row['p_d_img7_n']?></span>
+                                <p><?= $row['p_d_img7_d']?></p>
                             </li>
-                            <?php if($row['p_d_img8']){?>
-                            <li>
-                                <img src="<?=$row['p_d_img8'] ?>" alt="<?=$row['p_d_img8_n'] ?>">
-                                <span><?=$row['p_d_img8_n'] ?></span>
-                                <p><?=$row['p_d_img8_d'] ?></p>
-                            </li>
-                            <?php }?>
-                            <?php if($row['p_d_img9']){?>
-                            <li>
-                                <img src="<?=$row['p_d_img9'] ?>" alt="<?=$row['p_d_img9_n'] ?>">
-                                <span><?=$row['p_d_img9_n'] ?></span>
-                                <p><?=$row['p_d_img9_d'] ?></p>
-                            </li>
-                            <?php }?>
-                            <?php if($row['p_d_img10']){?>
-                            <li>
-                                <img src="<?=$row['p_d_img10'] ?>" alt="<?=$row['p_d_img10_n'] ?>">
-                                <span><?=$row['p_d_img10_n'] ?></span>
-                                <p><?=$row['p_d_img10_d'] ?></p>
-                            </li>
-                            <?php }?>
-                            
+
+                            <?php if($row['p_d_img8']) { ?>
+                                <li>
+                                    <img src="<?= $row['p_d_img8']?>" alt="none">
+                                    <span><?= $row['p_d_img8_n']?></span>
+                                    <p><?= $row['p_d_img8_d']?></p>
+                                </li>
+                            <?php } ?>
+
+                            <?php if($row['p_d_img9']) { ?>
+                                <li>
+                                    <img src="<?= $row['p_d_img9']?>" alt="none">
+                                    <span><?= $row['p_d_img9_n']?></span>
+                                    <p><?= $row['p_d_img9_d']?></p>
+                                </li>
+                            <?php } ?>
+
+                            <?php if($row['p_d_img10']) { ?>
+                                <li>
+                                    <img src="<?= $row['p_d_img10']?>" alt="none">
+                                    <span><?= $row['p_d_img10_n']?></span>
+                                    <p><?= $row['p_d_img10_d']?></p>
+                                </li>
+                            <?php } ?>
                         </ul>
                         <div class="all-ingre">
-                            <p><span>대표성분</span>
+                            <p>
+                                <span>대표성분</span>
                                 <?php 
-                                    if($row['p_d_img7_n']){ echo $row['p_d_img7_n']; echo '&nbsp';}
-                                    if($row['p_d_img8_n']){ echo $row['p_d_img8_n']; echo '&nbsp';}
-                                    if($row['p_d_img9_n']){ echo $row['p_d_img9_n']; echo '&nbsp';}
-                                    if($row['p_d_img10_n']){ echo $row['p_d_img10_n']; echo '&nbsp';}
-                                   
+                                    if($row['p_d_img7_n']){echo $row['p_d_img7_n']; echo '&nbsp';}
+                                    if($row['p_d_img8_n']){echo $row['p_d_img8_n']; echo '&nbsp';}
+                                    if($row['p_d_img9_n']){echo $row['p_d_img9_n']; echo '&nbsp';}
+                                    if($row['p_d_img10_n']){echo $row['p_d_img10_n']; echo '&nbsp';}
                                 ?>
-                                
+                            </p>
                             <p>
                                 <span>전 성분 표기</span>
-                               <?= $row['p_d_text_p_5'] ?>
+                                <?= $row['p_d_text_p_5']?>
                             </p>
                         </div>
                     </div>
-                    <?php if($row['p_d_q_1']){ ?>
-                        <div class="product-qna">
-                            <h3>Q & A</h3>
-                            <ul>
+                    <div class="product-qna">
+                        <h3>Q & A</h3>
+                        <ul>
+                            <li>
+                                <p><?= $row['p_d_q_1']?></p>
+                                <p><?= $row['p_d_a_1']?></p>
+                            </li>
+
+                            <?php if($row['p_d_q_2']) { ?>
                                 <li>
-                                    <p><?=$row['p_d_q_1']?></p>
-                                    <p>
-                                        <?= $row['p_d_a_1']?>
-                                    </p>
-                                </li>
-                                <?php if($row['p_d_q_2']){ ?>
-                                    <li>
                                     <p><?= $row['p_d_q_2']?></p>
-                                    <p>
-                                        <?= $row['p_d_a_2']?>
-                                    </p>
+                                    <p><?= $row['p_d_a_2']?></p>
                                 </li>
-                                <?php } ?>
-                                <?php if($row['p_d_q_3']){ ?>
-                                    <li>
+                            <?php } ?>
+
+                            <?php if($row['p_d_q_2']) { ?>
+                                <li>
                                     <p><?= $row['p_d_q_3']?></p>
-                                    <p>
-                                        <?= $row['p_d_a_3']?>
-                                    </p>
+                                    <p><?= $row['p_d_a_3']?></p>
                                 </li>
-                                <?php } ?>
-                                
-                            </ul>
-                        </div>
-                    <?php  } ?>
+                            <?php } ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="detail-view">
@@ -245,76 +239,24 @@
                     </div>
                     <div class="review-wrap">
                         <ul>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="review-top flex">
-                                    <span class="user">
-                                        <img src="https://www.lush.co.kr/upload/badge/607/badgeImageOn/20221006112048L.png" alt="icon">
-                                        <span>류*현</span>
-                                    </span>
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                    <span class="date">2022-11-18</span>
-                                </div>
-                                <div class="review-bottom flex">
-                                    <p>팩을 하고나니까 피부가 환해졌어요!</p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                                </div>
-                            </li>
+                            <?php
+                                $reviewQuery = $PDO->query("SELECT * FROM product_review LEFT JOIN product ON product_review.p_code = product.p_code LEFT JOIN customerinfo ON product_review.uID = customerinfo.uID;");
+                                while($review = $reviewQuery->fetch()) { ?>
+                                <li>
+                                    <div class="review-top flex">
+                                        <div class="user flex">
+                                            <div class="profile"><img src="<?=$review['profile']?>" alt="icon"></div>
+                                            <span><?=$review['uNAME']?></span>
+                                        </div>
+                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars<?=$review['rating']?>.svg" alt="stars">
+                                        <span class="date"><?= $review['reviewDate']?></span>
+                                    </div>
+                                    <div class="review-bottom flex">
+                                        <p><?=$review['content']?></p>
+                                        <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
+                                    </div>
+                                </li>
+                            <?php } ?>               
                         </ul>
                     </div>
                     <div class="pagination">
@@ -367,7 +309,7 @@
                         </li>
                         <li class="flex">
                             <span>제품 주요 사양</span>
-                            <p><?= $row['pks']?>
+                            <p><?= $row['pks']?></p>
                         </li>
                         <li class="flex">
                             <span>사용 기한</span>
@@ -377,11 +319,11 @@
                             <span>사용 방법</span>
                             <p><?= $row['how_to_use']?></p>
                         </li>
-                        <?php if($row['m_company']){?>
-                        <li class="flex">
-                            <span>제조사</span>
-                            <p><?= $row['m_company']?></p>
-                        </li>
+                        <?php if($row['m_company']) {?>
+                            <li class="flex">
+                                <span>제조사</span>
+                                <p><?= $row['m_company']?></p>
+                            </li>
                         <?php } ?>
                         <li class="flex">
                             <span>제조국</span>
@@ -414,13 +356,13 @@
     </section>
     <?php } ?>
     <?php require_once("../component/footer.php")?>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
- 
     <script>
-        $(".cart-btn").click(function () {
+        $(".cart-btn").click(function() {
             var tp = $('#amount-result').val();
             var product = $('.cart-btn').val();
-            window.location.assign("cart_add.php?p="+product+"&tp="+tp);        
+            window.location.assign("../php/cart_add.php?p="+product+"&tp="+tp);
         });
 
         var productSubSwiper = new Swiper(".productSub", {
@@ -456,7 +398,6 @@
         });
 
         function count(type) {
-            
             var price = $('.price p').text();
             const amount = document.getElementById("amount-result");
             let num = amount.value;
@@ -483,12 +424,15 @@
                 $(".detail-tab > li > a").eq(idx).addClass('on');
                 $(".product-detail .detail-view").eq(idx).addClass('on');
             });
-
-          
         });
 
-        
+        $(".buy-btn").click(function() {
+            var q = $('#amount-result').val();
+            var product = $('.cart-btn').val();
+            var tp = $('#total-price').text().replace("," , ""); 
+            
+            window.location.assign("../order_add.php?p="+product+"&q="+q+"&tp="+tp);
+        });
     </script>
-
 </body>
 </html>

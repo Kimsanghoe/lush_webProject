@@ -77,6 +77,7 @@
     letter-spacing: -1.5px;
 }
 .basic-swiper .image_wrapper .banner-text span {
+    text-align: left;
     display: block;
     margin-top: 15px;
     font-size: 16px;

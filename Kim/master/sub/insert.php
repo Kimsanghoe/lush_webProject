@@ -3,7 +3,7 @@
 	require("db_connect.php");
 	$p_add_code = $_REQUEST["p_add_code"];
 
-	if($p_add_code != ""){
+	if($p_add_code != "") {
 		$p_add_name = $_REQUEST["p_add_name"] ?? "";
 		$p_add_price = $_REQUEST["p_add_price"] ?? "";
 		$p_add_category = $_REQUEST["p_add_category"] ?? "";
@@ -21,7 +21,7 @@
 		$p_add_img2 = $_REQUEST["p_add_img2"] ?? "";
 		$p_add_img3 = $_REQUEST["p_add_img3"] ?? "";
 
-		if(($p_add_name && $p_add_price && $p_add_category && $p_add_img1)){
+		if(($p_add_name && $p_add_price && $p_add_category && $p_add_img1)) {
 			$PDO->exec("update product set p_name='$p_add_name', r_price='$p_add_price', stock='$p_add_stock', p_state='$p_add_state', p_img1='$p_add_img1', p_img2='$p_add_img2', p_img3='$p_add_img3' where p_code=$p_add_code");						
 			header("Location:p_management.html?site=".$_SESSION['site_set']);
 			exit;

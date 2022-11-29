@@ -39,3 +39,7 @@
     padding-right: 20px;
 }
 
+.pagination {padding-top: 50px;}
+.pagination ul {justify-content: center;width: 100%;}
+.pagination ul li {display: block;padding: 0 10px;}
+.pagination ul li a {font-size: 14px;}

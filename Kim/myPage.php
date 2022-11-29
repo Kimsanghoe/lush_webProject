@@ -22,12 +22,21 @@
         <!-- sidebar -->
         <?php require_once("./component/sidebar.php");?>
 
+        <?php 
+            require("./php/db_connect.php");
+            $uid = $_SESSION["userId"];
+
+            $query = $PDO->query("select * from customerInfo where uID = '$uid'");
+            $row = $query->fetch();
+
+            $userName = $row["uNick"] ? $row["uNick"] : $uid;
+        ?>
         <div class="content-space">
             <div class="user-box flex">
                 <div class="user-info flex center">
-                    <img src="https://www.lush.co.kr/upload/user_level/1/Logo%20(1).png" alt="levelImg">
-                    <div>
-                        <p class="user-name"><?=$_SESSION["userName"] ?? ""?>님</p>
+                    <div class="user-info-box"><img src="<?=$row['profile']?>" alt="levelImg"></div>
+                    <div class="user-info-text">
+                        <p class="user-name"><?=$userName?> 님</p>
                         <a href="#">회원정보 변경</a>
                         <br>
                         <a href="#">배송지 관리</a>

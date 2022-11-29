@@ -10,7 +10,7 @@
             <nav class="top-menu">
                 <ul class="flex left">
                     <li class="main-menu">
-                        <a href="#">제품</a>
+                        <a href="/rnk/sub/sub_product.php?cate=best">제품</a>
                         <div class="drop-menu">
                             <div class="drop-menu-wrap">
                                 <ul class="flex top">

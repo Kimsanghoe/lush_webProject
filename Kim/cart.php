@@ -64,13 +64,22 @@
                             <th>합계금액</th>
                         </tr>
                     </thead>
+                    <tbody>
                     <?php
                         $uid = $_SESSION["userId"];
                         $query = $PDO->query("select * from product, basket, category where product.p_code = basket.p_code and product.c_code = category.c_code and basket.uID = '$uid'");
-                        
+                        $count = $query->rowCount();
+
+                        if($count == 0) {
+                    ?>
+                        <tr class="empty">
+                            <td colspan="6">
+                                <span>장바구니에 담겨있는 제품이 없습니다.</span>
+                            </td>
+                        </tr>
+                    <?php } else {
                         while($row = $query->fetch()) {
                     ?>
-                    <tbody>
                         <tr>
                             <td class="item-checkbox">
                                 <input type="checkbox" id="cart-all" class="check-box" name="p_check">
@@ -100,8 +109,9 @@
                                 <span id="total-price"><?=$total?></span>
                             </td>
                         </tr>
+                    <?php }
+                    } ?>
                     </tbody>
-                    <?php } ?>
                 </table>
             </form>
         </div>
@@ -122,11 +132,11 @@
             <p>* 장바구니제품이 품절되면 자동으로 목록에서 삭제됩니다.</p>
         </div>
         <div class="cart-button-wrap flex">
-            <button class="border-btn">쇼핑 계속하기</button>          
-            <button class="black-btn" type="button">주문하기</button>     
+            <button class="border-btn">쇼핑 계속하기</button>
+            <button class="order-btn black-btn">주문하기</button>
         </div>
     </section>
-     
+
     <?php require_once("./component/footer.php");?>
 
     <script>
@@ -192,8 +202,14 @@
                 var td = tr.children();
                 rowData.push(tr.text());
                 var no = td.eq(2).find('input').val();
+                console.log(no);
                 tdArr.push(no);
             });
+
+            if(tdArr == '') {
+                alert("제품을 선택해주세요.");
+                exit();
+            }
 
             location.assign("php/cart_del.php?p="+tdArr);
         });
@@ -227,7 +243,7 @@
             $(".total-wrap li:nth-child(1) span").text(checked);
         });
 
-        $(".black-btn").click(function() {
+        $(".order-btn").click(function() {
             var rowData = new Array();
             var p = new Array();
             var q = new Array();
@@ -246,7 +262,8 @@
                 q.push(qun);
                 totalp.push(pr);   
             });
-            location.assign("/rnk/order_add.php?p="+p+"&q="+q+"&tp="+totalp);
+
+            location.assign("/rnk/php/order_add.php?p="+p+"&q="+q+"&tp="+totalp);
         });
     </script>
 </body>
