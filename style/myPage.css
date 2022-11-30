@@ -94,17 +94,17 @@
 .review-form-wrap {display: none;}
 .review-form-wrap.on {display: table-row;}
 .review-form-wrap td h3 {text-align: center;}
-.review-form {text-align: center;}
-.review-form .review-rate {width: 100%;display: inline-block;direction: rtl;border: 0;margin-bottom: 10px;}
-.review-form input[type=radio] {appearance: auto;/*display: none;*/}
-.review-form .review-rate label {padding: 0 5px;font-size: 3em;color: transparent;text-shadow: 0 0 0 #f0f0f0 !important;}
-.review-text {display: block;width: 60%;height: 150px;padding: 10px;resize: none;border: 1px solid #cbcbcb;background-color: #f4f4f4;margin: 0 auto 10px auto;}
+#review-form {text-align: center;}
+#review-form .review-rate {width: 100%;display: inline-block;border: 0;margin-bottom: 10px;}
+#review-form input[type=radio] {display: none;}
+#review-form .review-rate label {padding: 0 5px;font-size: 3em;color: transparent;text-shadow: 0 0 0 #f0f0f0 !important;}
+#review-text {display: block;width: 60%;height: 150px;padding: 10px;resize: none;border: 1px solid #cbcbcb;background-color: #f4f4f4;margin: 0 auto 10px auto;}
 .filebox {margin-bottom: 50px;}
 .filebox .upload-name {display: inline-block;height: 40px;padding: 0 10px;vertical-align: middle;border: 1px solid #ddd;width: 30%;color: #999;}
 .filebox label {display: inline-block;padding: 10px 20px;color: #fff;vertical-align: middle;background-color: #999;cursor: pointer;height: 40px;margin-left: 10px;}
 .filebox input[type="file"] {position: absolute;width: 0;height: 0;padding: 0;overflow: hidden;border: 0;}
-.review-form button {width: 150px;margin: 0 10px;padding: 10px 20px;}
-.review-form .submit-btn {color: #fff;background-color: #999;}
+#review-form button {width: 150px;margin: 0 10px;padding: 10px 20px;}
+#review-form .submit-btn {color: #fff;background-color: #999;}
 
 /* #review-form .review-rate label:hover {text-shadow: 0 0 0 #a00 !important;}
 #review-form .review-rate label:hover ~ label {text-shadow: 0 0 0 #a00 !important;}

@@ -114,21 +114,21 @@
                         </tr>
                         <tr class="review-form-wrap">
                             <td colspan="5">
-                                <form class="review-form" id="review-form<?=$ro["p_code"]?>" name="review-form" method="GET" action="./php/review_add.php" enctype="multipart/form-data">
+                                <form id="review-form" name="review-form" method="POST" action="./php/review_add.php" enctype="multipart/form-data">
                                     <p>제품은 어떠셨나요?</p>
                                     <input type="text" name="pCode" value="<?=$ro["p_code"]?>" style="display:none;">
                                     <fieldset class="review-rate">
-                                        <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">★</label>
-                                        <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">★</label>
-                                        <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">★</label>
-                                        <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">★</label>
-                                        <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">★</label>
+                                        <input type="radio" name="rating" value="1" id="rate1<?=$ro['order_num']?>"><label for="rate1<?=$ro['order_num']?>">★</label>
+                                        <input type="radio" name="rating" value="2" id="rate2<?=$ro['order_num']?>"><label for="rate2<?=$ro['order_num']?>">★</label>
+                                        <input type="radio" name="rating" value="3" id="rate3<?=$ro['order_num']?>"><label for="rate3<?=$ro['order_num']?>">★</label>
+                                        <input type="radio" name="rating" value="4" id="rate4<?=$ro['order_num']?>"><label for="rate4<?=$ro['order_num']?>">★</label>
+                                        <input type="radio" name="rating" value="5" id="rate5<?=$ro['order_num']?>"><label for="rate5<?=$ro['order_num']?>">★</label>
                                     </fieldset>
-                                    <textarea name="review-text" id="review-text" placeholder="제품의 후기를 남겨주세요" required></textarea>
+                                    <textarea name="review-text" id="review-text" placeholder="제품의 후기를 남겨주세요"></textarea>
                                     <div class="filebox">
                                         <input class="upload-name" value="선택된 파일이 없습니다" placeholder="선택된 파일이 없습니다" readonly>
-                                        <label for="file">사진 첨부</label>
-                                        <input type="file" id="file" name="_reviewImg">
+                                        <label for="file<?=$ro['order_num']?>">사진 첨부</label>
+                                        <input type="file" id="file<?=$ro['order_num']?>" name="_reviewImg">
                                     </div>
                                     <button type="button" class="cancel-btn border-btn">취소</button>
                                     <button type="button" class="submit-btn" form="review-form<?=$ro["p_code"]?>">리뷰 작성하기</button>
@@ -147,8 +147,13 @@
 
     <script>
         $(document).ready(() => {
-            $("#file").on('change', () => {
-                var fileName = $("#file").val();
+            $(".review-rate label").click(function() {
+                $(this).attr('style', 'text-shadow: 0 0 0 #a00!important').prevAll().attr('style', 'text-shadow: 0 0 0 #a00!important');
+                $(this).nextAll().attr('style', 'text-shadow: 0 0 0 #f0f0f0!important');
+            });
+
+            $(".filebox > input[type=file]").on('change', function() {
+                var fileName = $(this).val().split('/').pop().split('\\').pop();
                 $(".upload-name").val(fileName);
             });
 
