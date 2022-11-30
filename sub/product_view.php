@@ -240,7 +240,7 @@
                     <div class="review-wrap">
                         <ul>
                         <?php
-                            $reviewQuery = $PDO->query("SELECT * FROM product_review LEFT JOIN product ON product_review.p_code = product.p_code LEFT JOIN customerinfo ON product_review.uID = customerinfo.uID;");
+                            $reviewQuery = $PDO->query("SELECT * FROM customerinfo, product_review WHERE customerinfo.uid = product_review.uid AND p_code='$product';");
                             while($review = $reviewQuery->fetch()) { ?>
                             <li>
                                 <div class="review-top flex">
@@ -249,11 +249,15 @@
                                         <span><?=$review['uNAME']?></span>
                                     </div>
                                     <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars<?=$review['rating']?>.svg" alt="stars">
-                                    <span class="date"><?= $review['reviewDate']?></span>
+                                    <span class="date"><?=$review['reviewDate']?></span>
                                 </div>
                                 <div class="review-bottom flex">
                                     <p><?=$review['content']?></p>
-                                    <div class="review-side"><img src="https://www.lush.co.kr/upload/review/97/519c945dff.jpeg" alt="none"></div>
+                                    <?php if(isset($review['reviewImg'])) { ?>
+                                    <div class="review-side">
+                                        <img src="<?=$review['reviewImg']?>" alt="none">
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </li>
                             <?php } ?>

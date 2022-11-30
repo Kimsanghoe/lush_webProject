@@ -114,8 +114,9 @@
                         </tr>
                         <tr class="review-form-wrap">
                             <td colspan="5">
-                                <form id="review-form" name="review-form" method="POST" action="#">
+                                <form class="review-form" id="review-form<?=$ro["p_code"]?>" name="review-form" method="GET" action="./php/review_add.php" enctype="multipart/form-data">
                                     <p>제품은 어떠셨나요?</p>
+                                    <input type="text" name="pCode" value="<?=$ro["p_code"]?>" style="display:none;">
                                     <fieldset class="review-rate">
                                         <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">★</label>
                                         <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">★</label>
@@ -123,14 +124,14 @@
                                         <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">★</label>
                                         <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">★</label>
                                     </fieldset>
-                                    <textarea name="review-text" id="review-text" placeholder="제품의 후기를 남겨주세요"></textarea>
+                                    <textarea name="review-text" id="review-text" placeholder="제품의 후기를 남겨주세요" required></textarea>
                                     <div class="filebox">
                                         <input class="upload-name" value="선택된 파일이 없습니다" placeholder="선택된 파일이 없습니다" readonly>
                                         <label for="file">사진 첨부</label>
-                                        <input type="file" id="file" multiple>
+                                        <input type="file" id="file" name="_reviewImg">
                                     </div>
                                     <button type="button" class="cancel-btn border-btn">취소</button>
-                                    <button type="submit" class="submit-btn">리뷰 작성하기</button>
+                                    <button type="button" class="submit-btn" form="review-form<?=$ro["p_code"]?>">리뷰 작성하기</button>
                                 </form>
                             </td>
                         </tr>
@@ -147,24 +148,31 @@
     <script>
         $(document).ready(() => {
             $("#file").on('change', () => {
-                if($("#file")[0].files.length <= 0) {
-                    $(".upload-name").val("선택된 파일이 없습니다");
-                } else if($("#file")[0].files.length === 1) {
-                    var fileName = $("#file").val();
-                    $(".upload-name").val(fileName);
+                var fileName = $("#file").val();
+                $(".upload-name").val(fileName);
+            });
+
+            $(".review-write").click(function() {
+                var thisRow = $(this).closest('tr');
+                var review_tr = thisRow.next();
+
+                if (review_tr.hasClass("on")) { 
+                    review_tr.removeClass("on");
                 } else {
-                    $(".upload-name").val($("#file")[0].files.length + "개 파일 선택됨");
+                    review_tr.addClass("on");
                 }
             });
 
-            $(".review-write").click((e) => {
-                console.log("order-table-wrap : ", $(e.target).parents(".order-table-wrap").index());
-                console.log("order-wrap : ", $(e.target).parents(".order-wrap").index());
-                // $(".review-form-wrap").toggle();
+            $(".cancel-btn").click(function() {
+                var thisRow = $(this).closest('tr');
+                if (thisRow.hasClass("on")) { 
+                    thisRow.removeClass("on");
+                }
             });
 
-            $(".cancel-btn").click(() => {
-                // $(".review-form-wrap").hide();
+            $(".submit-btn").click(function() {
+                var thisRow = $(this).closest('tr');
+                thisRow.find("form").submit();
             });
         });
     </script>
