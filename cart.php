@@ -100,13 +100,13 @@
                                     <button type="button" class="amount plus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_plus_black.svg" alt="plus"></button>
                                 </div>
                             </td>
-                            <td class="item-price"><span><?=number_format($row['r_price']) ?></span></td>
+                            <td class="item-price">￦ <span><?=number_format($row['r_price']) ?></span></td>
                             <td class="item-result">
                                 <?php 
                                     $total = $row['r_price'] * $row['p_quantity'];
                                     $total = number_format($total);
                                 ?>
-                                <span id="total-price"><?=$total?></span>
+                                ￦ <span id="total-price"><?=$total?></span>
                             </td>
                         </tr>
                     <?php }

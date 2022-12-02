@@ -15,8 +15,8 @@
 .product-intro {width: 100%;}
 .product-intro > .image-area {width: 60%;}
 .product-intro > .info-area {width: 40%;margin-left: 50px;}
-.info-area > .info-top {margin-top: 30px;}
-.info-top li a {display: block;color: #535353;border-bottom: 1px solid #535353;}
+.info-area > .info-top {margin: 30px 0;}
+.info-top li span {display: block;color: #535353;border-bottom: 1px solid #535353;cursor: pointer;}
 .info-area > .info-wrap{width: 100%;}
 .info-wrap > img {width: 100%;}
 .info-wrap > .product-name {font-size: 32px;text-align: center;}
@@ -84,6 +84,8 @@
 .product-qna ul li p:last-of-type {color: #535353;margin: 12px 0;}
 
 .review {padding: 0 10%;}
+.review .empty-review {padding: 40px 0;width: 100%;}
+.review .empty-review p {text-align: center;}
 .review h2 {margin-bottom: 38px;}
 .review .reviewSwipe .swiper-slide {background-position: center;background-size: cover;width: 250px;height: 250px;}
 .review-wrap {margin-top: 60px;}

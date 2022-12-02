@@ -9,6 +9,7 @@
         $rating = $_POST["rating"] ?? "";
         $reviewText = $_POST["review-text"] ?? "";
         $pCode = $_POST["pCode"];
+        $orderNum = $_POST["orderNum"];
         $tempFile = $_FILES['_reviewImg']['tmp_name'];
 
         if(!($rating && $reviewText)) {
@@ -59,15 +60,21 @@
             }
         }
 
-        $sql = $PDO->prepare("INSERT INTO product_review (uID, p_code, rating, content, reviewImg, reviewDate) VALUE (:uID, :p_code, :rating, :content, :reviewImg, now());");
+        $sql = $PDO->prepare("INSERT INTO product_review (uID, order_num, p_code, rating, content, reviewImg, reviewDate) VALUE (:uID, :order_num, :p_code, :rating, :content, :reviewImg, now());");
         $sql->bindParam(':uID', $uid);
+        $sql->bindParam(':order_num', $orderNum);
         $sql->bindParam(':p_code', $pCode);
         $sql->bindParam(':rating', $rating);
         $sql->bindParam(':content', $reviewText);
         $sql->bindParam(':reviewImg', $resFile);
         $sql->execute();
 
-        header("location:../signUpComplete.php");
+        $prevPage = $_SERVER['HTTP_REFERER'];
+
+        echo "<script>
+                alert('소중한 리뷰 감사합니다!');
+                history.back();
+            </script>";
     } else {
         errMsg("로그인해야합니다.");
     }

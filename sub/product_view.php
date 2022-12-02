@@ -24,6 +24,7 @@
 
     <?php
         $product = $_REQUEST["p"];
+        $numRecords = $PDO->query("select count(*) from product_review where p_code = $product")->fetchColumn();
         $query = $PDO->query("select * from product, product_detail, category where product.p_code = product_detail.p_code and product.c_code = category.c_code and product.p_code = $product");
         while($row = $query->fetch()) {
     ?>
@@ -65,7 +66,7 @@
             </div>
             <div class="info-area">
                 <ul class="info-top flex">
-                    <li><a href="#">276 개의 후기 보기</a></li>
+                    <li><span id="gotoReview"><?=$numRecords?> 개의 후기 보기</span></li>
                     <li><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/share.svg" alt="none"></li>
                 </ul>
                 <div class="info-wrap">
@@ -126,15 +127,15 @@
                             <p><?= $row['p_d_text_p_1']?></p>
                             <span>by. 스페이스</span>
                         </li>
-                        <li class="product-recommend-img"><img src="<?= $row['p_d_img5']?>" alt="none"></li>
+                        <li class="product-recommend-img"><img src="<?=$row['p_d_img5']?>" alt="none"></li>
                     </ul>
                     <div class="product-description">
                         <h3><?= $row['p_d_text_h3_2']?></h3>
                         <p><?= $row['p_d_text_p_2']?></p>
                     </div>
-                    <div class="product-banner"><img src="<?= $row['p_d_img6']?>" alt="none"></div>
+                    <div class="product-banner"><img src="<?=$row['p_d_img6']?>" alt="none"></div>
                     <ul class="product-recommend flex">
-                        <li class="product-recommend-img"><img src="https://img.lush.co.kr/product/body/maskofmagnanminty_use.jpg" alt="none"></li>    
+                        <li class="product-recommend-img"><img src="<?=$row['p_d_img6_1']?>" alt="none"></li>
                         <li class="product-recommend-body" style="text-align: right;">
                             <h3>사용 방법</h3>
                             <p><?= $row["p_d_text_p_3"]?></p>
@@ -220,19 +221,18 @@
             </div>
             <div class="detail-view">
                 <div class="review">
-                    <h2>총 2776개의 후기</h2>
+                    <h2>총 <?=$numRecords?>개의 후기</h2>
+
+                    <?php if($numRecords != 0) { ?>
                     <div class="swiper reviewSwipe">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/ac2fd25883.jpg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/f76f344231.jpeg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/527e2cd9cb.jpg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/9bdf506375580a2a" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/519c945dff.jpeg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/ac2fd25883.jpg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/f76f344231.jpeg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/527e2cd9cb.jpg" alt="none"></div>
-                            <div class="swiper-slide"><img src="https://www.lush.co.kr/thumbnail?src=/upload/review/97/9bdf506375580a2a" alt="none"></div>
+                        <?php
+                            $reviewImgQuery = $PDO->query("SELECT reviewImg FROM product_review WHERE p_code = {$row["p_code"]};");
+                            while($images = $reviewImgQuery->fetch()) {
+                                if($images['reviewImg'] == null) { continue; }
+                        ?>
+                            <div class="swiper-slide"><img src="<?=$images['reviewImg']?>" alt="none"></div>
+                        <?php } ?>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -263,15 +263,11 @@
                             <?php } ?>
                         </ul>
                     </div>
-                    <div class="pagination">
-                        <ul class="flex">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
+                    <?php } else { ?>
+                        <div class="empty-review">
+                            <p>등록된 제품 후기가 없습니다.</p>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="detail-view">
@@ -427,6 +423,17 @@
 
                 $(".detail-tab > li > a").eq(idx).addClass('on');
                 $(".product-detail .detail-view").eq(idx).addClass('on');
+            });
+
+            $("#gotoReview").click(function() {
+                $(".detail-tab > li > a").removeClass('on');
+                $(".product-detail .detail-view").removeClass('on');
+
+                $(".detail-tab > li > a").eq(1).addClass('on');
+                $(".product-detail .detail-view").eq(1).addClass('on');
+
+                var offset = $(".product-detail").offset()
+                $("html").animate({scrollTop: offset.top}, 400);
             });
         });
     </script>
