@@ -1,6 +1,6 @@
 <?php
-    require("db_connect.php");
-    $conn = mysqli_connect("127.0.0.1:3306", "root", "", "rnkDB");
+    
+    $conn = mysqli_connect("127.0.0.1:3307", "ksh", "1234", "kshDB");
 
     switch($_SESSION["site_set"]) {
         case 'best':

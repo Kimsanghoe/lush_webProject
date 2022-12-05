@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="right_col" role="main">
+            <div class="right_col" role="main" style="min-height:750px">
                 <div class="row">
                     <div class="top_wrapper" style="background-color:#222;border-radius:10px;">
                         <div class="right">
@@ -83,109 +83,30 @@
                             <span>배송 진행 상황</span>
                             <p>모두 보기</p>
                         </div>
+                        <?php 
+                            require("sub/db_connect.php");
+                            $dvWait = $PDO->query("select count(*) from order_list where o_state = 2")->fetchColumn();
+                            $dvIng = $PDO->query("select count(*) from order_list where o_state = 3")->fetchColumn();
+                            $dvDone = $PDO->query("select count(*) from order_list where o_state = 0")->fetchColumn();
+                            $dvLate = $PDO->query("select count(*) from order_list where o_state = 4")->fetchColumn();
+                            
+                        ?>
                         <div class="delivery_progress_wrapper">
                             <div class="delivery_progress wait">
-                                <span>231</span>
+                                <span><?= $dvWait?></span>
                                 <p>배송 대기중</p>
                             </div>
                             <div class="delivery_progress ing">
-                                <span>369</span>
+                                <span><?= $dvIng?></span>
                                 <p>배송 중</p>
                             </div>
                             <div class="delivery_progress completion">
-                                <span>478</span>
+                                <span><?= $dvDone?></span>
                                 <p>배송 완료</p>
                             </div>
                             <div class="delivery_progress delay">
-                                <span>12</span>
+                                <span><?= $dvLate?></span>
                                 <p>배송 지연</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="search_word_wrapper" style="background-color:#222;border-radius:10px;">
-                        <div class="search_word_text wrapper_text">
-                            <span>가장 많이 유입되는 검색어</span>
-                        </div>
-                        <div class="search_word_content">
-                            <div><span>#러쉬 팩</span></div>
-                            <div><span>#러쉬 더티</span></div>
-                            <div><span>#러쉬 바디워시</span></div>
-                            <div><span>#러쉬 입욕제</span></div>
-                            <div><span>#러쉬 바디로션</span></div>
-                            <div><span>#러쉬 비누</span></div>
-                            <div><span>#러쉬 배쓰밤</span></div>
-                            <div><span>#러쉬 향수</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="customer_service_wrapper" style="background-color:#222; border-radius: 10px;">
-                        <div class="customer_service_text wrapper_text">
-                            <span>고객 응대 현황</span>
-                            <p>모두 보기</p>
-                        </div>
-                        <div class="customer_service">
-                            <div class="cs_row">
-                                <div class="cs_profile">
-                                    <img src="img/user.png" alt="user">
-                                    <span>류성현</span>
-                                </div>
-                                <div class="cs_question">
-                                    <span>러쉬 스파는 어디에 있나요?</span>
-                                </div>
-                                <div class="cs_uptime">
-                                    <span>2022.09.29 PM 08:12</span>
-                                </div>
-                                <div class="cs_state">
-                                    <span>완료</span>
-                                </div>
-                            </div>
-                            <div class="cs_row">
-                                <div class="cs_profile">
-                                    <img src="img/user.png" alt="user">
-                                    <span>류성현</span>
-                                </div>
-                                <div class="cs_question">
-                                    <span>러쉬 스파는 어디에 있나요?</span>
-                                </div>
-                                <div class="cs_uptime">
-                                    <span>2022.09.29 PM 08:12</span>
-                                </div>
-                                <div class="cs_state">
-                                    <span>완료</span>
-                                </div>
-                            </div>
-                            <div class="cs_row">
-                                <div class="cs_profile">
-                                    <img src="img/user.png" alt="user">
-                                    <span>류성현</span>
-                                </div>
-                                <div class="cs_question">
-                                    <span>러쉬 스파는 어디에 있나요?</span>
-                                </div>
-                                <div class="cs_uptime">
-                                    <span>2022.09.29 PM 08:12</span>
-                                </div>
-                                <div class="cs_state">
-                                    <span>완료</span>
-                                </div>
-                            </div>
-                            <div class="cs_row">
-                                <div class="cs_profile">
-                                    <img src="img/user.png" alt="user">
-                                    <span>류성현</span>
-                                </div>
-                                <div class="cs_question">
-                                    <span>러쉬 스파는 어디에 있나요?</span>
-                                </div>
-                                <div class="cs_uptime">
-                                    <span>2022.09.29 PM 08:12</span>
-                                </div>
-                                <div class="cs_state">
-                                    <span>완료</span>
-                                </div>
                             </div>
                         </div>
                     </div>

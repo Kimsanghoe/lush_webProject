@@ -1,10 +1,11 @@
 <?php
-    session_start();
-
+    
+    include_once("db_connect.php");
     $_SESSION["site_set"] = $_REQUEST["site"];
+    $site = $_SESSION["site_set"];
     $p_code = $_REQUEST["p_code"] ?? "";
-
     if($p_code != "") {
+        
         $query = $PDO->query("select * from product, category where product.c_code = category.c_code and $p_code = product.p_code");
         while($row = $query->fetch()) {
             $p_add_code = $row["p_code"];
@@ -97,7 +98,7 @@
                 </div>
             </div>
             <div class="right_col" role="main">
-                <div class="row" style="display: inline-block;">
+                <div class="row" style="display: block;">
                     <div class="top_wrapper">
                         <div class="right">
                             <?php include("count.php"); ?>
@@ -251,6 +252,60 @@
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="../js/jjj.js"></script>
+   
+    <?php echo("<script language='javascript'>var site = '$site'; </script>"); ?>
+    <script>
+        var r_height = $( ".right_col" ).outerHeight(true);
+       
+       
+
+        if($(".left_col").height()>900){
+            $(".left_col").css("min-height", r_height);
+        }
+
+
+
+        $(".p_add_btn, .p_update_btn").on("click", function() {
+            if ($(".product_add_wrapper").hasClass("on")) { 
+                $(".product_add_wrapper").removeClass("on");
+            }
+            else {
+                $(".product_add_wrapper").addClass("on");
+            }
+            
+        });
+
+        $(".p_update_btn").click(function () {
+            var p_code = $("input[type=radio][name=update_radio]").filter(":checked")[0];
+            location.replace("?p_code="+p_code.value+'&site='+site+'#update');
+            
+        });
+
+        $(".p_delete_btn").click(function () {
+            var p_code = $("input[type=radio][name=update_radio]").filter(":checked")[0];
+            location.replace("delete.php?p_code="+p_code.value);
+            
+        });
+
+        $(document).ready(function () {
+            if (window.location.hash == '#update') {
+            onReload();
+            }
+        });
+        
+        function onReload () {
+            if ($(".product_add_wrapper").hasClass("on")) { 
+                $(".product_add_wrapper").removeClass("on");
+            }
+            else {
+                $(".product_add_wrapper").addClass("on");
+            }
+        }
+        
+
+
+
+    </script>
+
 </body>
 </html>

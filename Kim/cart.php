@@ -84,6 +84,7 @@
                             <td class="item-checkbox">
                                 <input type="checkbox" id="cart-all" class="check-box" name="p_check">
                                 <label for="cart-all"></label>
+                                <button type="text" value="<?= $row['basket_id']?>" style="display:none"> </button>
                             </td>
                             <td class="item-image">
                                 <img src="<?=$row['p_img1']?>" alt="none">
@@ -100,13 +101,13 @@
                                     <button type="button" class="amount plus" ><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/ico_plus_black.svg" alt="plus"></button>
                                 </div>
                             </td>
-                            <td class="item-price"><span><?=number_format($row['r_price']) ?></span></td>
+                            <td class="item-price">￦<span><?=number_format($row['r_price']) ?></span></td>
                             <td class="item-result">
                                 <?php 
                                     $total = $row['r_price'] * $row['p_quantity'];
                                     $total = number_format($total);
                                 ?>
-                                <span id="total-price"><?=$total?></span>
+                                ￦<span id="total-price"><?=$total?></span>
                             </td>
                         </tr>
                     <?php }
@@ -133,7 +134,7 @@
         </div>
         <div class="cart-button-wrap flex">
             <button class="border-btn">쇼핑 계속하기</button>
-            <button class="order-btn black-btn">주문하기</button>
+            <button class="order-btn black-btn" type="button">주문하기</button>
         </div>
     </section>
 
@@ -247,6 +248,7 @@
             var rowData = new Array();
             var p = new Array();
             var q = new Array();
+            var d = new Array();
             var checkbox = $("input[name=p_check]:checked");
             var totalp = new Array();
             
@@ -257,13 +259,16 @@
                 var no = td.eq(2).find('input').val();
                 var qun = td.eq(3).find('input').val();
                 var pr = td.eq(5).find('span').text();
+                var del = td.eq(0).find('button').val();
                 pr = pr.replace("," , "");
                 p.push(no);
                 q.push(qun);
+                d.push(del);
                 totalp.push(pr);   
+                
             });
+            location.assign("/rnk/php/order_add.php?p="+p+"&q="+q+"&tp="+totalp+"&d="+d);
 
-            location.assign("/rnk/php/order_add.php?p="+p+"&q="+q+"&tp="+totalp);
         });
     </script>
 </body>

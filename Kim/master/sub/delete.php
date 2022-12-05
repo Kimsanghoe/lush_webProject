@@ -4,6 +4,7 @@
 	require("db_connect.php");
 	$p_code = $_REQUEST["p_code"];
 	$PDO->exec("delete from product where p_code=$p_code");	
+	$PDO->exec("delete from best50 where p_code=$p_code");	
 	
 	header("Location:p_management.php?site=".$_SESSION["site_set"]);
 	exit;

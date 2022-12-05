@@ -1,6 +1,10 @@
 var r_height = $( ".right_col" ).outerHeight(true);
 
-$(".left_col").css("min-height", r_height);
+if($(".left_col").height()>900){
+    $(".left_col").css("min-height", r_height);
+}
+
+
 
 $(".p_add_btn, .p_update_btn").on("click", function() {
     if ($(".product_add_wrapper").hasClass("on")) { 

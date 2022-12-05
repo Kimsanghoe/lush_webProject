@@ -1,10 +1,11 @@
 <?php
-    $host = 'localhost';
-    $database = 'rnkDB';
-    $user = 'root';
-    $password = '';
+    $host = 'localhost:3307';
+    $database = 'kshDB';
+    $user = 'ksh';
+    $password = '1234';
 
     try {
+        
         $PDO = new PDO("mysql:host={$host};dbname={$database}",$user,$password);
         $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $PDO->exec("set names utf8");
