@@ -435,6 +435,14 @@
                 var offset = $(".product-detail").offset()
                 $("html").animate({scrollTop: offset.top}, 400);
             });
+
+            $(".buy-btn").click(function() {
+                var q = $('#amount-result').val();
+                var product = $('.cart-btn').val();
+                var tp = $('#total-price').text().replace("," , ""); 
+                
+                window.location.assign("../php/order_add.php?p="+product+"&q="+q+"&tp="+tp);
+            });
         });
     </script>
 </body>
