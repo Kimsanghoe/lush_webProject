@@ -1,6 +1,17 @@
 <?php
-    session_start(); 
+    session_start();
     $cate = $_REQUEST["cate"];
+    $all = $cate == "best" ? "on" : "";
+    $b50 = $cate == "best50" ? "on" : "";
+    
+    switch($cate) {
+        case "best":
+            $location = "베스트";
+            break;
+        case "best50":
+            $location = "베스트50";
+            break;
+    }
 ?>
 
 <!DOCTYPE html>

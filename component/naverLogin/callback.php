@@ -52,17 +52,19 @@
 
                 exit;
             } else {
+                // print_r($res_data);
                 $emptyData = "";
 
-                $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate, regist) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now(), :regist);");
-                $sql->bindParam(':uID', $res_data['response']['id']);
-                $sql->bindParam(':uPW', $emptyData, PDO::PARAM_STR);
+                $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate, regist, profile) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now(), :regist, :profile);");
+                $sql->bindParam(':uID', $res_data['response']['email']);
+                $sql->bindParam(':uPW', $res_data['response']['id']);
                 $sql->bindParam(':uNAME', $res_data['response']['name']);
                 $sql->bindParam(':uNick', $res_data['response']['nickname']);
                 $sql->bindParam(':uEmail', $res_data['response']['email']);
                 $sql->bindParam(':uPhoneNum', $res_data['response']['mobile']);
                 $sql->bindParam(':uAddress', $emptyData, PDO::PARAM_STR);
                 $sql->bindParam(':regist', $regist, PDO::PARAM_STR);
+                $sql->bindParam(':profile', $res_data['response']['profile_image']);
 
                 $sql->execute();
 
