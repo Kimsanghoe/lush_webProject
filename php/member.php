@@ -13,6 +13,7 @@
             $uEmail = $_POST["_email"].$_POST["_emailTail"] ?? "";
             $uPhone = $_POST["_phone"] ?? "";
             $uAddress = $_POST["_addr1"].' '.$_POST["_addr2"].' ('.$_POST["_zip"].')' ?? "";
+            $profile = $_POST["_profile"] ?? "";
 
             $sql = $PDO->prepare("SELECT * FROM customerinfo WHERE uID=:uID");
             $sql->bindParam(':uID', $uid);
@@ -33,12 +34,51 @@
                 errMsg('이메일은 "rnk1234@rnk.net" 형식으로 작성되어야 합니다.');
             } elseif(!preg_match("/^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/", $uPhone)) {
                 errMsg('휴대전화 번호는 "010-1234-1234" 형식으로 작성되어야 합니다.');
-            } 
+            }
 
+            if($profile) {
+                $tempFile = $_FILES['profile']['tmp_name'];
+                $fileTypeExt = explode("/", $_FILES['profile']['type']);
+                $fileType = $fileTypeExt[0];
+                $fileExt = $fileTypeExt[1];
+                $extStatus = false;
+                switch($fileExt) {
+                    case 'jpeg':
+                    case 'jpg':
+                    case 'gif':
+                    case 'bmp':
+                    case 'png':
+                        $extStatus = true;
+                        break;
+                    
+                    default :
+                        errMsg('이미지 전용 확장자(jpg, bmp, gif, png)외에는 사용이 불가능합니다.');
+                        break;
+                }
+
+                if($fileType == 'image') {
+                    if($extStatus) {
+                        $resFile = "C:/xampp/htdocs/rnk/images/profile/{$_FILES['profile']['name']}";
+
+                        if($imageUpload = move_uploaded_file($tempFile, $resFile)) {
+                            $resFile = substr($resFile, 15);
+                        } else {
+                            errMsg('파일 업로드에 실패하였습니다.');
+                        }
+                    } else {
+                        errMsg('파일 확장자는 jpg, bmp, gif, png 이어야 합니다.');
+                        exit;
+                    }
+                } else {
+                    errMsg('이미지 파일이 아닙니다.');
+                    exit;
+                }
+            }
+            
             $hashedPw = password_hash($upw, PASSWORD_DEFAULT);
             $regist = "homepage";
 
-            $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate, regist) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now(), :regist);");
+            $sql = $PDO->prepare("INSERT INTO customerinfo (uID, uPW, uNAME, uNick, uEmail, uPhoneNum, uAddress, redate, regist, profile) VALUE (:uID, :uPW, :uNAME, :uNick, :uEmail, :uPhoneNum, :uAddress, now(), :regist, :profile);");
             $sql->bindParam(':uID', $uid);
             $sql->bindParam(':uPW', $hashedPw);
             $sql->bindParam(':uNAME', $uName);
@@ -47,6 +87,7 @@
             $sql->bindParam(':uPhoneNum', $uPhone);
             $sql->bindParam(':uAddress', $uAddress);
             $sql->bindParam(':regist', $regist, PDO::PARAM_STR);
+            $sql->bindParam(':profile', $resFile);
 
             $sql->execute();
 

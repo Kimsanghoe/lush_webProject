@@ -19,7 +19,10 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php require_once("./component/header.php")?>
+    <?php 
+        require_once("./component/header.php");
+        require("php/db_connect.php");
+    ?>
 
     <article>
         <div class="main">
@@ -64,146 +67,49 @@
                 <!-- 두 번째 Swiper -->
                 <div class="swiper card-swiper content-space">
                     <div class="swiper-wrapper">
+                        <?php
+                            $query = $PDO->query("SELECT * FROM product_review pr, product_detail p, customerinfo c WHERE pr.p_code = p.p_code AND pr.uID = c.uID ORDER BY pr.reviewDate DESC LIMIT 7;");
+                            while($row = $query->fetch()) {
+                                $strlen = mb_strlen($row["uNAME"], "UTF-8");
+                                $maskingValue = "";
+
+                                switch($strlen) {
+                                    case 2:
+                                        $maskingValue = mb_strcut($row['uNAME'], 0, 3, "UTF-8").'*';
+                                        break;
+                                    case 3:
+                                        $maskingValue = mb_strcut($row['uNAME'], 0, 3, "UTF-8").'*'.mb_strcut($row['uNAME'], 8, 11, "UTF-8");
+                                        break;
+                                    case 4:
+                                        $maskingValue = mb_strcut($row['uNAME'], 0, 3, "UTF-8").'**'.mb_strcut($row['uNAME'], 12, 15, "UTF-8");
+                                        break;
+                                    default:
+                                        $maskingValue = mb_strcut($row['uNAME'], 0, 3, "UTF-8").'**'.mb_strcut($row['uNAME'], 12, 15, "UTF-8");
+                                        break;
+                                }
+                        ?>
                         <div class="swiper-slide">
                             <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>무시무시한</p>
+                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars<?=$row["rating"]?>.svg" alt="stars">
+                                <p><?=$row["p_d_hashtag2"]?></p>
                                 <div class="sub-button">
                                     <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
                                     <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
                                 </div>
                             </div>
                             <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
+                                <?php $reviewImg = $row["reviewImg"] ?? $row["p_d_img1"]?>
+                                <img src="<?=$reviewImg?>" alt="img">
                             </div>
                             <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
+                                <p><?=$row["content"]?></p>
                                 <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
+                                    <img src="<?=$row["profile"]?>" alt="usericon">
+                                    <span><?=$maskingValue?></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
-                                <div class="sub-button">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                </div>
-                            </div>
-                            <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
-                            </div>
-                            <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
-                                <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
-                                <div class="sub-button">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                </div>
-                            </div>
-                            <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
-                            </div>
-                            <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
-                                <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
-                                <div class="sub-button">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                </div>
-                            </div>
-                            <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
-                            </div>
-                            <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
-                                <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
-                                <div class="sub-button">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                </div>
-                            </div>
-                            <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
-                            </div>
-                            <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
-                                <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
-                                <div class="sub-button">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                </div>
-                            </div>
-                            <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
-                            </div>
-                            <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
-                                <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-head">
-                                <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/stars5.svg" alt="stars">
-                                <p>부드러움을 선물</p>
-                                <div class="sub-button">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                    <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                </div>
-                            </div>
-                            <div class="image_wrapper">
-                                <img src="https://www.lush.co.kr/upload/heroImage/20211008112304M.jpg" alt="img">
-                            </div>
-                            <div class="card-tail">
-                                <p>상큼달달한 오렌지가 지친 발을 기분 좋게 감싸줘요. 수분이 부족해 딱딱해진 발에게 최고에요!</p>
-                                <div class="user">
-                                    <img src="https://www.lush.co.kr/upload/badge/542/badgeImageOn/20220725181942XS.png" alt="usericon">
-                                    <span>최*비</span>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
 
                     <!-- Add Pagination -->
@@ -229,9 +135,13 @@
                         </div>
                         <div class="swiper mini-card-swiper">
                             <div class="swiper-wrapper">
+                                <?php
+                                    $query = $PDO->query("SELECT * FROM best50, category WHERE best50.c_code=category.c_code ORDER BY p_hits DESC LIMIT 7;");
+                                    while($row = $query->fetch()) {
+                                ?>
                                 <div class="swiper-slide">
                                     <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
+                                        <img src="<?=$row["p_img1"]?>" alt="img">
                                     </div>
                                     <div class="sub-button">
                                         <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
@@ -239,129 +149,15 @@
                                     </div>
                                     <div class="product">
                                         <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
+                                            <a href="#" class="product-subtitle"><?=$row["p_name"]?></a>
                                             <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
+                                                <a href="#">#<?=$row["c_name"]?></a>
                                             </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
+                                            <a href="#" class="product-subtitle">₩<?=$row["r_price"]?></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
-                                    </div>
-                                    <div class="sub-button">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                    </div>
-                                    <div class="product">
-                                        <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
-                                            <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
-                                            </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
-                                    </div>
-                                    <div class="sub-button">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                    </div>
-                                    <div class="product">
-                                        <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
-                                            <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
-                                            </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
-                                    </div>
-                                    <div class="sub-button">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                    </div>
-                                    <div class="product">
-                                        <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
-                                            <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
-                                            </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
-                                    </div>
-                                    <div class="sub-button">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                    </div>
-                                    <div class="product">
-                                        <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
-                                            <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
-                                            </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
-                                    </div>
-                                    <div class="sub-button">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                    </div>
-                                    <div class="product">
-                                        <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
-                                            <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
-                                            </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="image_wrapper">
-                                        <img src="https://www.lush.co.kr/upload/item/248/20220926131943L.png" alt="img">
-                                    </div>
-                                    <div class="sub-button">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
-                                        <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/bag.svg" alt="img">
-                                    </div>
-                                    <div class="product">
-                                        <div class="user">
-                                            <a href="#" class="product-subtitle">트와일라잇</a>
-                                            <div class="hash-box">
-                                                <a href="#">#보디스프레이</a>
-                                                <a href="#">#차분한달콤함</a>
-                                            </div>
-                                            <a href="#" class="product-subtitle">₩60,000</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-scrollbar swiper-scrollbar2"></div>
@@ -433,8 +229,8 @@
                     <div class="video-content flex-box">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/XuyYexBNGXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <div class="video-text">
-                            <h2>TWISTED TWENTY OF LUSH KOREA</h2>
-                            <p>"세상을 비트는 욕심쟁이 스무살"<br/>러쉬코리아 20주년 쇼케이스에 여러분을 초대합니다!</p>
+                            <h2>TWISTED TWENTY OF R&K KOREA</h2>
+                            <p>"세상을 비트는 욕심쟁이 스무살"<br/>R&K 20주년 쇼케이스에 여러분을 초대합니다!</p>
                         </div>
                     </div>
                 </div>

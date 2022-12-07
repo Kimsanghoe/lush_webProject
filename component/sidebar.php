@@ -1,9 +1,9 @@
 <div class="sidebar">
-    <p class="sidebar-title">마이페이지</p>
+    <p class="sidebar-title"><a href="/rnk/myPage.php">마이페이지</a></p>
     <div class="sidebar-item">
         <p>쇼핑정보</p>
         <ul>
-            <li><a href="#">주문/배송 조회</a></li>
+            <li><a href="/rnk/orderInquiry.php">주문/배송 조회</a></li>
         </ul>
     </div>
     <div class="sidebar-item">

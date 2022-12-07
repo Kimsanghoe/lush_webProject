@@ -40,7 +40,7 @@
     top: 8px;
     width: 8px;
     height: 13px;
-    background: url("../images/arrow_next.svg") no-repeat center center;
+    background: url("../images/ico/arrow_next.svg") no-repeat center center;
 }
 .join-form {margin-top: 50px;}
 .form-title {margin-bottom: 20px;}
@@ -53,5 +53,11 @@
 .form-content-title span {color: #c81b1b; font-weight: bold;}
 .form-content-text {width: 100%; height: 50px; border: 1px solid #949494; padding-left: 10px;}
 .form-content-btn {height: 50px; float: right; background-color: #dedede; padding: 0 30px;}
-.form-content-select {width: 90%; height: 50px; float: right; background: url(../../images/ico/arrow_down_gray.svg) no-repeat 92% 50%/15px auto;}
+.form-content-select {width: 90%; height: 50px; float: right; background: url(../images/ico/arrow_down_gray.svg) no-repeat 92% 50%/15px auto;}
 .form-submit-btn {width: 250px; height: 50px; float: right; background-color: #222; color: #fff; padding: 0 30px;}
+
+.profileForm, .submitForm {margin-top: 50px;}
+input[type=file]::file-selector-button {width: 150px;height: 50px;background-color: #dedede;padding: 0 30px;cursor: pointer;border: none;font-family: "NotoSans",dotum,'돋움';}
+.drop-zone {margin-top: 10px;height: 200px;border: 1px solid #949494;}
+.drop-zone p {text-align: center;line-height: 200px;}
+.drop-zone-dragenter, .drop-zone-dragover {background-color: #949494;}

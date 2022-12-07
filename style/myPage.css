@@ -2,6 +2,12 @@
 .container {width: 1280px;margin: 0 auto;}
 .flex {display: flex; align-items: center;}
 .flex .center {justify-content: center;}
+.border-btn {border: 1px solid #222;background-color: #fff;color: #222;text-align: center;}
+.border-btn.disabled {border: none;background-color: #18a957;color: #fff;}
+.black-btn {border: 1px solid #222;background-color: #222;color: #fff;text-align: center;}
+#individual_price {font-size: 12px;color: #757575;}
+.empty {padding: 100px 0;width: 100%;}
+.empty p {text-align: center;}
 
 /* section */
 #section {padding-top: 128px; align-items: flex-start;}
@@ -15,7 +21,8 @@
 
 .user-box {width: 100%;margin-top: 30px;padding: 40px 0;background-color: #fafafa;}
 .user-box .user-info {width: 360px;}
-.user-box .user-info > img {display: block;margin-right: 32px;}
+.user-box .user-info > .user-info-box {width: 100px;height: 100px;border-radius: 70%;overflow: hidden;margin-right: 32px;}
+.user-box .user-info > .user-info-box > img {width: 100%;height: 100%;object-fit: cover;}
 .user-box .user-info .user-name {margin-bottom: 8px;font-size: 24px;font-weight: 700;}
 .user-box .user-info a {display: inline-block;color: #535353;line-height: 20px;border-bottom: 1px solid #535353;margin-top: 4px;}
 .user-menu {width: calc(100% - 360px);}
@@ -54,3 +61,54 @@
 .recent-viewer ul{padding: 16px 0;}
 .recent-viewer ul li{display: block;position: relative;text-align: center;width: calc(100%);}
 .recent-viewer ul li p{color: #222;}
+
+.order-title {width: 100%;margin-top: 30px;}
+.order-dateForm {width: 100%;margin-top: 30px;}
+.order-dateForm .formWrap {border: 1px solid #eee;padding: 20px;}
+.formWrap > span {color: #757575;}
+.formWrap form {display: inline-block;margin-left: 20px;}
+.formWrap form input[type="date"]::before {content: attr(data-placeholder);width: 100%;}
+.formWrap form input[type="date"]:focus::before,
+.formWrap form input[type="date"]:valid::before {display: none;}
+.formWrap form input[type="date"] {width: 200px;height: 40px;padding: 10px 5px;border: 1px solid #757575;}
+.formWrap form span {columns: #757575;margin: 0 10px;}
+.formWrap button {height: 40px;padding: 5px 50px;margin-left: auto;}
+
+.order-table-wrap {margin-top: 50px;}
+.order-table-title {padding-bottom: 10px;border-bottom: 2px solid #222;}
+.order-table-title h2 {margin-right: 20px;}
+.order-table-title p {font-size: 14px;color: #757575;margin-top: auto;}
+.order-table-title p > span {color: #18a957;}
+.order-table-title > span {font-size: 16px;text-decoration: underline;text-underline-offset: 2px;margin-left: auto;}
+
+.order-table thead tr th {border-bottom: 1px solid #eee;font-size: 16px;color: #757575;font-weight: 400;height: 70px;vertical-align: middle;padding: 20px 0;}
+.order-table {width: 100%;border-bottom: 1px solid #eee;}
+.order-table tbody tr {height: 100px;}
+.order-table tbody tr td {font-size: 16px;padding: 16px 0;vertical-align: middle;text-align: center;margin-top: -1px;}
+.order-table tbody tr td:first-of-type {text-align: left;}
+.item-info img {width: 100px;background-color: #f6f6f6;}
+.item-info .item-text {display: inline-block;vertical-align: middle;margin-left: 24px;}
+.item-info p:first-of-type {color: #222;font-size: 18px;}
+.item-info p:last-of-type {color: #757575;font-size: 16px;}
+.item-status .done {color: #18a957;}
+.item-status .ing {color: #e74747;}
+.item-setting button {padding: 10px 20px;}
+
+.review-form-wrap {display: none;}
+.review-form-wrap.on {display: table-row;}
+.review-form-wrap td h3 {text-align: center;}
+#review-form {text-align: center;}
+#review-form .review-rate {width: 100%;display: inline-block;border: 0;margin-bottom: 10px;}
+#review-form input[type=radio] {display: none;}
+#review-form .review-rate label {padding: 0 5px;font-size: 3em;color: transparent;text-shadow: 0 0 0 #f0f0f0 !important;}
+#review-text {display: block;width: 60%;height: 150px;padding: 10px;resize: none;border: 1px solid #cbcbcb;background-color: #f4f4f4;margin: 0 auto 10px auto;}
+.filebox {margin-bottom: 50px;}
+.filebox .upload-name {display: inline-block;height: 40px;padding: 0 10px;vertical-align: middle;border: 1px solid #ddd;width: 30%;color: #999;}
+.filebox label {display: inline-block;padding: 10px 20px;color: #fff;vertical-align: middle;background-color: #999;cursor: pointer;height: 40px;margin-left: 10px;}
+.filebox input[type="file"] {position: absolute;width: 0;height: 0;padding: 0;overflow: hidden;border: 0;}
+#review-form button {width: 150px;margin: 0 10px;padding: 10px 20px;}
+#review-form .submit-btn {color: #fff;background-color: #999;}
+
+/* #review-form .review-rate label:hover {text-shadow: 0 0 0 #a00 !important;}
+#review-form .review-rate label:hover ~ label {text-shadow: 0 0 0 #a00 !important;}
+#review-form input[type=radio]:checked ~ label {text-shadow: 0 0 0 #a00 !important;} */

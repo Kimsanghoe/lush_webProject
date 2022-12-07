@@ -1,6 +1,4 @@
 <?php
-    // session_start();
-    // require_once("./php/check_id.php");
     require("./php/db_connect.php");
 ?>
 
@@ -133,7 +131,7 @@
                 <p><span>*</span> 표시는 반드시 입력하셔야 하는 항목입니다.</p>
             </div>
             
-            <form name="member-form" method="post" action="./php/member.php?mode=register" class="form-content" autocomplete="off">
+            <form name="member-form" method="post" action="./php/member.php?mode=register" class="form-content" autocomplete="off" enctype="multipart/form-data">
                 <div class="form-row flex">
                     <div class="flexin-1">
                         <p class="form-content-title"><span>*</span> 아이디</p>
@@ -235,7 +233,19 @@
                         <input class="form-content-text" type="text" name="_addr2">
                     </div>
                 </div>
-                <div class="form-row flex center">
+                <div class="form-row flex profileForm">
+                    <div class="flexin-1">
+                        <p class="form-content-title">프로필 사진</p>
+                    </div>
+                    <div class="flexin-5">
+                        <input type="file" name="_profile" id="file">
+                        <div class="flexin-2 drop-zone">
+                            <p>또는 파일을 여기로 드래그하세요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row flex center submitForm">
                     <input class="form-submit-btn" type="submit" name="submit_btn" value="회원가입">
                 </div>
             </form>
@@ -245,6 +255,7 @@
     <?php require_once("./component/footer.php") ?>
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="./js/imgDrop.js"></script>
 
     <script>
         function checkid() {

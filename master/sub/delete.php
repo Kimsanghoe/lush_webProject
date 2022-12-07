@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+	
 	require("db_connect.php");
 	$p_code = $_REQUEST["p_code"];
 	$PDO->exec("delete from product where p_code=$p_code");	
