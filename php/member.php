@@ -73,6 +73,8 @@
                     errMsg('이미지 파일이 아닙니다.');
                     exit;
                 }
+            } else {
+                $resFile = "/rnk/images/profile/default_user.png";
             }
             
             $hashedPw = password_hash($upw, PASSWORD_DEFAULT);

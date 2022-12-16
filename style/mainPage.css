@@ -208,6 +208,9 @@
     color: #222;
     padding-right: 10px;
 }
+.product-summary img {
+    padding-bottom: 14px;
+}
 .product-summary p {
     margin: 5px 0 30px 0;
     font-size: 16px;
