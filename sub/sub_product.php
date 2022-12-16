@@ -44,14 +44,13 @@
                     <li>&nbsp;>&nbsp;</li>
                     <li class="item">제품</li>
                     <li>&nbsp;>&nbsp;</li>
-                    <li class='item'>베스트</li>
+                    <li class='item'><?=$location?></li>
                 </ul>
             </div>
             <div class="goods_list_top clearbox">
                 <div class="goods_list_summary">
-                    <span class="sort_item on"><a href="#">전체</a></span>
-                    <span class="sort_item "><a href="#">best50</a></span>
-                    <span class="sort_item "><a href="#">주간 베스트</a></span>
+                    <span class="sort_item <?=$all?>"><a href="?cate=best">전체</a></span>
+                    <span class="sort_item <?=$b50?>"><a href="?cate=best50">best50</a></span>
                     <span class="sort_item "><a href="#">국내제조</a></span>
                     <span class="sort_item "><a href="#">네이키드</a></span>
                     <span class="sort_item "><a href="#">러쉬 아트 큐레이션</a></span>
@@ -93,7 +92,7 @@
                         </div>
                         <a href="product_view.php?p=<?= $row["p_code"]?>" class="name"><?=$row["p_name"]?></a>
                         <a href="product_view.php?p=<?= $row["p_code"]?>" class="cate"><?=$row["c_name"]?></a>
-                        <a href="product_view.php?p=<?= $row["p_code"]?>" class="price">￦<?=$row["r_price"]?></a>
+                        <a href="product_view.php?p=<?= $row["p_code"]?>" class="price">￦ <?=number_format($row["r_price"]);?></a>
                         <div class="item-mask" style="display: none; opacity: 1;"></div>
                     </div>
                     <div class="buttons" style="display: none; opacity: 1;">

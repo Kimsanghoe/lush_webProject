@@ -99,7 +99,7 @@
                             </div>
                             <div class="image_wrapper">
                                 <?php $reviewImg = $row["reviewImg"] ?? $row["p_d_img1"]?>
-                                <img src="<?=$reviewImg?>" alt="img">
+                                <a href="./sub/product_view.php?p=<?=$row["p_code"]?>"><img src="<?=$reviewImg?>" alt="img"></a>
                             </div>
                             <div class="card-tail">
                                 <p><?=$row["content"]?></p>
@@ -130,7 +130,7 @@
                     <div class="product">
                         <div class="product-summary">
                             <span>BEST</span>
-                            <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/arrow_forward_black.svg" alt="img">
+                            <a href="./sub/sub_product.php?cate=best"><img src="https://www.lush.co.kr/content/renewal/pc/images/ico/arrow_forward_black.svg" alt="img"></a>
                             <p>지금 가장 인기있는 제품을 만나보세요!</p>
                         </div>
                         <div class="swiper mini-card-swiper">
@@ -141,7 +141,7 @@
                                 ?>
                                 <div class="swiper-slide">
                                     <div class="image_wrapper">
-                                        <img src="<?=$row["p_img1"]?>" alt="img">
+                                        <a href="./sub/product_view.php?p=<?=$row["p_code"]?>"><img src="<?=$row["p_img1"]?>" alt="img"></a>
                                     </div>
                                     <div class="sub-button">
                                         <img src="https://www.lush.co.kr/content/renewal/pc/images/ico/favourites.svg" alt="img">
@@ -153,7 +153,7 @@
                                             <div class="hash-box">
                                                 <a href="#">#<?=$row["c_name"]?></a>
                                             </div>
-                                            <a href="#" class="product-subtitle">₩<?=$row["r_price"]?></a>
+                                            <a href="#" class="product-subtitle">₩ <?=number_format($row["r_price"]);?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -251,8 +251,8 @@
                             <div class="spa-content flex-box">
                                 <img src="https://www.lush.co.kr/upload/mainPerfume/20220729152949L.png" alt="img">
                                 <div class="spa-text">
-                                    <h2>솔티 보디 스프레이</h2>
-                                    <p>오후의 산들바람부터 해가 지는 매직 아워까지,<br/>당신의 매력을 배가시켜줄 향기를 입어보세요!</p>
+                                    <h2>스노우 페어리<br/>보디 스프레이</h2>
+                                    <p>눈의 요정이 지나간 자리에 남는 향기!<br/>스칠 때마다 달콤한 향이 나는 몸,<br/>어떻게 사랑에 빠지지 않을 수 있을까요?</p>
                                 </div>
                             </div>
                         </div>
@@ -260,8 +260,8 @@
                             <div class="spa-content flex-box">
                                 <img src="https://www.lush.co.kr/upload/mainPerfume/20220729153004L.png" alt="img">
                                 <div class="spa-text">
-                                    <h2>솔티 보디 스프레이</h2>
-                                    <p>오후의 산들바람부터 해가 지는 매직 아워까지,<br/>당신의 매력을 배가시켜줄 향기를 입어보세요!</p>
+                                    <h2>로드 오브 미스룰<br/>보디 스프레이</h2>
+                                    <p>시간이 지날수록 진가를 뿜어내는 매력적인 향기,<br/>달콤한 바닐라가 지나간 자리에요!</p>
                                 </div>
                             </div>
                         </div>
@@ -285,8 +285,8 @@
                             <div class="spa-content flex-box">
                                 <img src="https://www.lush.co.kr/upload/mainSpa/20220818110337L.png" alt="img">
                                 <div class="spa-text">
-                                    <h2>더 굿 아워</h2>
-                                    <p>견고한 압의 마사지로 온몸의 생기를<br/>불어 넣어 지친 근육의 뻐근함을<br/>해방시켜 드립니다.</p>
+                                    <h2>더 에너자이저</h2>
+                                    <p>음악의 일부가 된듯한 짜릿함!<br/>드럼 스틱과 스트레칭 밴드를 활용하여 리듬에 맞춰<br/>몸과 마음의 에너지를 끌어올리는 마사지입니다.</p>
                                 </div>
                             </div>
                         </div>

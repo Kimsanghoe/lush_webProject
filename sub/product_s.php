@@ -4,7 +4,7 @@
 
     switch($cate){
         case 'best':
-            $query = $PDO->query("select * from product, category where product.c_code = category.c_code order by product.p_code limit $start, $listSize");
+            $query = $PDO->query("select * from product, category where product.c_code = category.c_code order by product.p_code desc limit $start, $listSize");
             break;
         case 'best50':
             $query = $PDO->query("select * from best50, category where best50.c_code = category.c_code order by best50.p_code limit $start, $listSize");

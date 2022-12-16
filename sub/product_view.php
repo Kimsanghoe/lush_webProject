@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <ul class="total-price-wrap">
-                        <li class="flex">총 합계 금액 <span>￦ <span id="total-price"><?= $row['r_price'] ?></span></span></li>
+                        <li class="flex">총 합계 금액 <span>￦ <span id="total-price"><?=number_format($row['r_price']);?></span></span></li>
                     </ul>
                     <div class="button-wrap flex">
                         <button class="like-btn border-btn">좋아요</button>
